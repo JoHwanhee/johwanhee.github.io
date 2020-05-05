@@ -223,8 +223,1102 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/prj/flutter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/prj/flutter/" class="post-title-link" itemprop="url">prj/flutter</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/prj/flutter/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/prj/flutter/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="플러터로-개발하기"><a href="#플러터로-개발하기" class="headerlink" title="플러터로 개발하기"></a>플러터로 개발하기</h1><p>작년말 이사님의 추천(?)으로 올해 팀즈에서 플러터를 이용한 앱을 만들어보기로했습니다.<br>큰 주제는 머테리얼 디자인 가이드와 플러터 학습으로 방향을 잡고 실제 서비스할 수 있는 앱을 런칭하는 것까지 목표를 세웠습니다.<br>이번 프로젝트에서 플루터를 통해 개발 하면서 느낀 주제들(머테리얼 가이드, UI 개발, 크로스플랫폼, 생산성)에 대해 이야기해볼까합니다.</p>
+<h3 id="머테리얼-디자인-가이드"><a href="#머테리얼-디자인-가이드" class="headerlink" title="머테리얼 디자인 가이드"></a>머테리얼 디자인 가이드</h3><p>플러터는 구글에서 개발하고 있는 프레임워크이며 머테리얼 디자인 가이드또한 구글에서 제시하는 UI 디자인 가이드다보니,<br>프레임워크차원에서 머테리얼 디자인 가이드에 맞춰 개발을 진행할 수 있는 점이 상당히 매력적으로 다가왔습니다.</p>
+<h4 id="다음은-플러터에서-제시하는-앱-테마-코드와-구글-머테리얼-디자인-가이드입니다"><a href="#다음은-플러터에서-제시하는-앱-테마-코드와-구글-머테리얼-디자인-가이드입니다" class="headerlink" title="다음은 플러터에서 제시하는 앱 테마 코드와 구글 머테리얼 디자인 가이드입니다."></a>다음은 플러터에서 제시하는 앱 테마 코드와 구글 머테리얼 디자인 가이드입니다.</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Color lightPrimary = HexColor.fromHex(<span class="string">"fdfdfd"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightPrimaryLight = HexColor.fromHex(<span class="string">"ffffff"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightPrimaryDark = HexColor.fromHex(<span class="string">"faf8f6"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightAccent = HexColor.fromHex(<span class="string">"ff9e00"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightAccentLight = HexColor.fromHex(<span class="string">"ffd69b"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightAccentDark = HexColor.fromHex(<span class="string">"ec8102"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> ThemeData lightTheme = ThemeData(</span><br><span class="line">  fontFamily: <span class="string">"NotoSans"</span>,</span><br><span class="line">  backgroundColor: lightBG,</span><br><span class="line">  accentColor:  lightAccent,</span><br><span class="line">  primaryColorLight: lightPrimaryLight,</span><br><span class="line">  primaryColorDark: lightPrimaryDark,</span><br><span class="line">  primaryColor: lightPrimary,</span><br><span class="line">  primaryIconTheme: IconThemeData(</span><br><span class="line">    color: HexColor.fromHex(<span class="string">"c4c4c4"</span>)</span><br><span class="line">  ),</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 중략</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><img src="https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F1hg4iTKzTMMgtJRx7bhaE2kSYR5BRYz1g%2Fcolor-colorsystem-schemecreation-theme.png" alt="img"></p>
+<p>처음에는 생소한 디자인 가이드라 그런지 저도 그렇고 디자이너님도 그렇고 어떤식으로 방향을 잡아야할지 난항을 겪었으나,<br>이후 개발을 직접 진행하면서는 전체적인 스타일이 다 잡힌 상태로 개발을 하는거라 그런지 코드양이 확실히 많이 줄고 새로운 컴포넌트를 추가할때도 편리하다는 장점이 있었습니다.<br>또한 테마변경 기능이 제공되어 다크테마 / 라이트테마 적용을 정말 색상값만 추가해주기만해도 바로 적용되는 모습을 봤을 때 감격을 눈물을 감출 수 없었습니다.</p>
+<h3 id="UI-개발"><a href="#UI-개발" class="headerlink" title="UI 개발"></a>UI 개발</h3><p>플러터는 UI를 코드로 그립니다. 아래 처럼요</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> Scaffold(</span><br><span class="line">      body: SafeArea(</span><br><span class="line">        child: Center(</span><br><span class="line">            child: ListView(</span><br><span class="line">              shrinkWrap: <span class="keyword">true</span>,</span><br><span class="line">              padding: EdgeInsets.only(left: <span class="number">20.0</span>, right: <span class="number">20.0</span>),</span><br><span class="line">              children: &lt;Widget&gt;[</span><br><span class="line">                email,</span><br><span class="line">                SizedBox(height: <span class="number">8.0</span>),</span><br><span class="line">                password,</span><br><span class="line">                SizedBox(height: <span class="number">24.0</span>),</span><br><span class="line">                loginButton,</span><br><span class="line">              ],</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line"></span><br><span class="line">      ),</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+
+<p>윈도우의 XAML, 안드로이드의 XML, 웹의 HTML등 마크업으로 진행하는 UI작업에 너무 익숙해져있던지라 처음에는 굉장히 불편하고 예전 JAVA의 SWING을 떠올리기도 했습니다.</p>
+<p>개발하다보니 이는 굉장히 큰 장점으로 다가왔습니다. UI에 로직을 추가하는 일, 데이터 바인딩을 하는 일 등을 마크업과 코드를 왔다갔다하지않고 Dart코드 하나로 모두 처리할 수 있어 개발속도를 높일 수 있었습니다.</p>
+<p>그리고 가장 큰 장점으로 <code>&lt;!-- UI에 주석을 이처럼 달지않고 --&gt;</code> <code>//이와같이 달 수 있습니다!</code></p>
+<h3 id="크로스-플랫폼"><a href="#크로스-플랫폼" class="headerlink" title="크로스 플랫폼"></a>크로스 플랫폼</h3><p>크로스 플랫폼은 오히려 단점으로 다가왔습니다. 라이브러리 하나를 추가하려면 ios / android 하나 하나 확인해가며 라이브러리 수정을 해야하거나 각기 다른 환경설정을 넣어줘야했고 이후에는 라이브러리 추가하는일이 “상당히 귀찮은 일”로 자리잡게 되었습니다.<br>또한 ios와 android모두 지향하는 ux부분이 다른데, 플루터는 one code base로 진행되다보니 ios, android가 정체성없는 ux가 나오는 점이 제게는 큰 단점으로 다가왔습니다.<br>코드내에서 ios android 플랫폼 검사를하여 view를 다르게 보여줄 수 도있는데, 이는 크로스플랫폼이 추구하는 방향은 아니라고 생각되어 적용해보진 않았습니다.</p>
+<h3 id="생산성"><a href="#생산성" class="headerlink" title="생산성"></a>생산성</h3><p>확실히 앱 개발속도는 빠릅니다. 특히나 hot reload의 runtime debuging 기능은 java를 통한 android 개발과는 차원이 다른 수준의 디버깅 경험을 선사해주었습니다.<br>집에선 flutter를 하고 사무실에선 android를 하는데, 사무실에서 작업할때마다 얼른 퇴근하고싶다(?)는 생각이 들게끔 해주는 정도였습니다.</p>
+<p><img src="https://flutter.dev/assets/tools/android-studio/hot-reload-36252b9c05984443ea5cd1960bab0f4ca904a6dfbe71165af4ed7f1b1c037124.gif" alt=""></p>
+<h3 id="결론-플러터-장점과-단점"><a href="#결론-플러터-장점과-단점" class="headerlink" title="결론, 플러터 장점과 단점"></a>결론, 플러터 장점과 단점</h3><p>장단점을 논하기엔 짧은 기간의 개발이라 조심스럽고 섣부른 판단일수도있습니다만,<br>플러터 자체적으로는 실무에 적용하기에 적당히 고려해볼수도있으나 <code>크로스플랫폼</code>앱을 실무에 적용하는건 무리가 있을것이라 판단됩니다.</p>
+<p>그런데 만약 <code>크로스플랫폼</code>을 도입하기로 결정이 된 상태이며 RN/xamarin/flutter중 하나를 고려해야한다면, flutter는 좋은 선택이 될것이라 생각됩니다.</p>
+<h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ul>
+<li>생산성/디버깅<ul>
+<li>핫 리로딩은 진짜 환상적임..</li>
+</ul>
+</li>
+<li>라이브러리 <ul>
+<li>생각보다 라이브러리가 많고 라이브러리 가져다쓰기가 편함</li>
+<li><a href="https://pub.dev/" target="_blank" rel="noopener">https://pub.dev/</a></li>
+</ul>
+</li>
+<li>디자인 <ul>
+<li>머테리얼 디자인이 최적화 되어있고 코드베이스에서 디자인 가이드 적용을 지원함</li>
+</ul>
+</li>
+</ul>
+<h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h3><ul>
+<li>디자인 <ul>
+<li>주관적인 의견이지만 ios android 모두 하나의 ux로 가는건 최악이라고 생각함</li>
+<li>(사실 이는 모든 크로스플랫폼을 부정하는 것이라..)</li>
+<li>android용 ios용으로 알아서 view가 변경되는 그런 기술이 나온다면 좋을 것 같음</li>
+</ul>
+</li>
+<li>라이브러리 <ul>
+<li>장점이자 단점인데, 라이브러리 적용할때마다 각 플랫폼별로 설정체크를 해주거나 심할경우 네이티브를 작성해야함</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/prj/chatbot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/prj/chatbot/" class="post-title-link" itemprop="url">prj/chatbot</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/prj/chatbot/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/prj/chatbot/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="사내프로젝트-챗봇-플랫폼-구현"><a href="#사내프로젝트-챗봇-플랫폼-구현" class="headerlink" title="사내프로젝트 - 챗봇 플랫폼 구현"></a>사내프로젝트 - 챗봇 플랫폼 구현</h1><ul>
+<li>개발자들이 pip install hiworker 명령어로 파이썬 소스를 다운받아 API key만 등록하면 메신져에 챗봇을 직접 만들 수 있다! 아, 이 어찌나 간결하고 좋은가..</li>
+<li>이 회고는 위의 문장을 기준으로 만들어 보게된 챗봇 플랫폼 구현에 대한 회고록이다.</li>
+<li>개발 회고를 이렇게 열심히 쓰는건 처음이라 뭘 어찌해야할지 모르겠다..ㅎ</li>
+</ul>
+<h3 id="개발-배경"><a href="#개발-배경" class="headerlink" title="개발 배경"></a>개발 배경</h3><ul>
+<li>슬랙봇 API와 같은 커스터마이징 가능한 챗봇을 파이썬 스크립트형태로 사용자들에게 제공하자.</li>
+<li>사내 메신져 사용하면서 특정 메세지만으로 회의실 예약을 하고 싶었다.</li>
+<li>그외 부가적으로 여러 부서마다 각자 제공하는 API들을 통합했으면 싶기도해서 “다른 개발자들이 챗봇을 만들수 있게 만들자!”를 구상하게 됐다.</li>
+</ul>
+<h3 id="결과물"><a href="#결과물" class="headerlink" title="결과물"></a>결과물</h3><ul>
+<li><a href="">GIF사진 들어갈 자리</a></li>
+<li>발표자료</li>
+<li>기능정의서</li>
+<li>개발 일정 수립서</li>
+</ul>
+<h3 id="개발회고"><a href="#개발회고" class="headerlink" title="개발회고"></a>개발회고</h3><h4 id="서버개발"><a href="#서버개발" class="headerlink" title="서버개발"></a>서버개발</h4><ol>
+<li><p>서버 구조 설계</p>
+<ul>
+<li>오랜만에 하는 서버 개발이라 너무 신나 이것저것 찾아보고 고민하며 전체 시스템 구조를 어떻게 잡아야할까 고민을 많이했다.</li>
+<li>이것 저것 고민하게 된 결과물의 사진은 아래와 같다.  </li>
+<li><a href="">최초 구상했던 전체 구조</a> </li>
+<li>생각보다 심플한 구성으로 시스템 설계가 이루어질 것 같았다.</li>
+<li>결국 HTTP(S)만으로 각각의 트랜잭션들을 처리하게 된다.</li>
+<li>이렇게 생각했던 이유는, 챗봇 스크립트를 flask 베이스로 제공하고 다른 개발자들에게 친숙한 HTTP통신을 제공 함으로써 각 프로토콜을 통일화하고 싶었다.</li>
+</ul>
+</li>
+<li><p>사실 이렇게하면 안 되는데..</p>
+<ul>
+<li>근데 이렇게하면 큰 문제점이 두 가지 생긴다.<ol>
+<li>이와같은 방식이면 모든 챗봇들이 공인 IP를 갖고 있어야한다.</li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li>http는 tcp 베이스이긴하지만 request / response 모델을 택하고있어 현재 접속중인 chatbot을 구분하기 어렵다.</li>
+</ol>
+</li>
+<li><p>이렇게 서버 구조가 바뀌었으면 어땠을까</p>
+<ul>
+<li>아니 이렇게 바뀌어야만한다. 하지만 당장의 시연이 중요했고 우선 중계서버와 챗봇 스크립트를 </li>
+<li><a href="">변경해야할 서버 구조</a> </li>
+</ul>
+</li>
+<li><p>API Key 서버</p>
+<ul>
+<li>요새 NoSQL DB에 관심이 많아 Mongo DB로 사용했고 역시나 별다른 테이블 설계에 쏟는 시간을 많이 줄일 수 있어 좋았다.</li>
+<li>근데 이상하게 커넥션-데이터수집이 느리더라</li>
+<li>매요청마다 커넥션을 맺게 되면 매요청마다 느릴 것 같아 Memory에 데이터를 Load하고 메모리를 가져가도록 설계했다.</li>
+</ul>
+</li>
+<li><p>중계 서버</p>
+<ul>
+<li>사실 API Key 서버와 별도로 분리했어야하는데, 시간관계상 API Key 서버와 통일하여 개발했다.</li>
+<li>얘는 각 챗봇들을 Group화 하여 특정 회사별로 제공하는 챗봇 리스트들을 따로 관리하게 하고자하는 서버다.</li>
+<li>어떤 챗봇이 어떤 회사에 속한 챗봇인지 알려주고 또 그 챗봇이랑 클라이언트랑 중간다리 형태로 통신하게하는 서버다.</li>
+</ul>
+</li>
+<li><p>HTTPS와 암호화</p>
+<ul>
+<li>보안적 이슈들의 고려 없이 개발을 했으나, 프로젝트 초기에는 SHA-256 암호화와 OpenSSL 인증서를 도입하여 개발할 목적이었다.</li>
+<li>시간이 조금 더 있었더라면 이라는 핑계로 적용해보지 못한것이 엄청난 한이다.</li>
+</ul>
+</li>
+</ol>
+<h4 id="챗봇-스크립트-오픈소스-개발"><a href="#챗봇-스크립트-오픈소스-개발" class="headerlink" title="챗봇 스크립트 오픈소스 개발"></a>챗봇 스크립트 오픈소스 개발</h4><ol>
+<li><p>오픈소스라하기도 민망한</p>
+<ul>
+<li>챗봇 스크립트는 pypi에 등록하여 오픈소스 배포를 했다.</li>
+<li>처음해보는 파이썬 오픈소스 배포였고 생각보다 오픈소스 배포 기반이 잘 마련되어있어 놀랐다.</li>
+</ul>
+</li>
+<li><p>역시 네이밍이..</p>
+<ul>
+<li>네이밍에대한 깊은 고민을 하지못했다.</li>
+<li>심플하게 Command와 Token으로만 구분하였고 나름의 정책을 세웠으나 (실제 소스에는 뭔가 이상한 이름으로 들어가있다.)</li>
+</ul>
+</li>
+</ol>
+<h4 id="클라이언트개발"><a href="#클라이언트개발" class="headerlink" title="클라이언트개발"></a>클라이언트개발</h4><ol>
+<li><p>WPF 개발하기</p>
+<ul>
+<li>WPF개발을 이번 프로젝트 하면서 조금이나마 알게된거같다. </li>
+<li>WPF App의 생명주기,각 화면의 좌표체계, 왜 OS이름이 Windows고 왜 각각을 Window라고 칭하는지</li>
+</ul>
+</li>
+<li><p>프론트엔드 개발자</p>
+<ul>
+<li>운명에도 없던 프론트엔드 개발을..</li>
+</ul>
+</li>
+<li><p>Style 파일 관리</p>
+</li>
+<li><p>Behind code와 MVVM</p>
+</li>
+</ol>
+<h4 id="협업"><a href="#협업" class="headerlink" title="협업"></a>협업</h4><ol>
+<li>기획자와의 협업</li>
+<li>디자이너와의 협업</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/1/" class="post-title-link" itemprop="url">books/객체지향의사실과오해/1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/books/객체지향의사실과오해/1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="객체지향의-사실과-오해"><a href="#객체지향의-사실과-오해" class="headerlink" title="객체지향의 사실과 오해"></a>객체지향의 사실과 오해</h1><p>객체지향은 실세계를 직접적이고 직관적으로 모델링할 수 있는 패러다임.</p>
+<h2 id="협력-하는-사람들-카페테리아의-아침"><a href="#협력-하는-사람들-카페테리아의-아침" class="headerlink" title="협력 하는 사람들 카페테리아의 아침"></a>협력 하는 사람들 카페테리아의 아침</h2><p>아침시간의 카페테리아는 항상 부족한 카페인을 채우려는 손님들의 아우성과 손님들이 마실 카페인을 제공하기 위해 ㅏ삐 움직이는 캐시어와 바리스타의 열정으로 가득찬다.</p>
+<ul>
+<li>손님은 커피를 주문하고 / 캐시어는 주문을 받고 / 바리스타는 커피를 제조한다 / 커피는 다시 캐시어에게 / 캐시어는 다시 손님에게</li>
+<li>이 과정속 손님 캐시어 바리스타의 암묵적인 협력 관계가 존재</li>
+<li>손님 캐시어 바리스타라는 역할이 존재</li>
+<li>이 셋은 협력하는 과정속에 자신이 맡은 바 책임을 다한다.</li>
+</ul>
+<h2 id="요청과-응답으로-구성된-협력"><a href="#요청과-응답으로-구성된-협력" class="headerlink" title="요청과 응답으로 구성된 협력"></a>요청과 응답으로 구성된 협력</h2><p>문제 해결에 필요한 지식을 알고있거나 서비스를 제공해줄 수 있는 사람에게 도움을 요청한다.</p>
+<ul>
+<li>요청은 연쇄적으로 발생한다.</li>
+<li>손님 &gt; (커피를 주문한다) &gt; 캐시어 &gt; (커피를 제조하라) &gt; 바리스타<br>요청받은 사람은 주어진 책임을 다하면서 다른 사람의 요청에 응답한다.</li>
+<li>응답역시 연쇄적으로 전달된다.</li>
+<li>손님 &lt; (커피완성) &lt; 캐시어 &lt; (커피완성) &lt; 바리스타</li>
+</ul>
+<h2 id="역할-책임-협력"><a href="#역할-책임-협력" class="headerlink" title="역할, 책임, 협력"></a>역할, 책임, 협력</h2><p>객체의 역할은 사람의 역할과 유사하게 다음과 같은 특징을 지닌다.</p>
+<ul>
+<li>여러 객체가 동일한 역할을 수행할 수 있다.</li>
+<li>역할은 대체 가능성을 의미한다.</li>
+<li>각 객체는 책임을 수행하는 방법을 자율적으로 선택할 수 있다.</li>
+<li>하나의 객체가 동시에 여러 역할을 수행할 수 있다.</li>
+</ul>
+<h2 id="협력-속에-사는-객체"><a href="#협력-속에-사는-객체" class="headerlink" title="협력 속에 사는 객체"></a>협력 속에 사는 객체</h2><p>객체지향 애플리케이션의윤곽을 결정하는 것은 역할, 책임, 협력이지만 실제로 협력에 참여하는 주체는 객체다. 만약 실행중인 애플리케이션의 내부를 눈으로 직접 볼 수 있다면 그 안에는 쉴새없이 메시지를 주고 받으며 협력하는 객체가 존재한다는 것을 확인할 수 있을것이다.</p>
+<ul>
+<li>객체는 충분히 협력적이어야 한다.</li>
+<li>객체는 충분히 자율적이어야한다.</li>
+<li>객체는 애플리케이션의 기능을 구현하기 위해 존재한다.</li>
+<li>객체지향 애플리케이션의 아름다움을 결정하는 것이 협력이라면 협력이 얼마나 조화를 이루는지 결정하는 것은 객체다.</li>
+<li>“외부의 도움을 무시한 채 모든 것을 스스로 처리하려고 하는 전지전능한 객체는 내부적인 복잡도에 의해 자멸하고 만다.”</li>
+</ul>
+<h2 id="상태와-행동을-함께-지닌-자율적인-객체"><a href="#상태와-행동을-함께-지닌-자율적인-객체" class="headerlink" title="상태와 행동을 함께 지닌 자율적인 객체"></a>상태와 행동을 함께 지닌 자율적인 객체</h2><p>객체가 협력에 참여하기 위해 어떤 행동을 해야한다면 그 행동을 하는 데 필요한 상태도 함게 지니고 있어야 한다는 것을 의미한다.</p>
+<ul>
+<li>객체가 협력에 참여하는 과정 속에서 스스로 판단하고 스스로 결정하는 자율적인 존재로 남기 위해서는 필요한 행동과 상태를 함께 지니고 있어야한다.</li>
+<li>객체는 다른 객체가 ‘무엇’을 수행하는지는 알 수 있지만 ‘어떻게’ 수행하는지에 대해서는 알 수 없다.</li>
+</ul>
+<h2 id="객체지향의-본질"><a href="#객체지향의-본질" class="headerlink" title="객체지향의 본질"></a>객체지향의 본질</h2><ul>
+<li>객체지향이란 시스템을 상호작용하는 자율적인 객체들의 공동체로 바라보고 객체를 이용해 시스템을 분할하는 방법이다.</li>
+<li>자율적인 객체란 상태와 행위를 함께지니며 스스로 자기 자신을 책임지는 객체를 의미한다.</li>
+<li>객체는 시스템의 행위를 구현하기위해 다른 객체와 협력한다.</li>
+<li>각 객체는 협력 내에서 정해진 역할을 수행하며 역할은 관련된 책임의 집합이다.</li>
+<li>객체는 다른 객체와 협력하기 위해 메세지를 전송</li>
+<li>메시지를 수신한 객체는 메시지를 처리하는 데 적합한 메서드를 자율적으로 선택한다.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">훌륭한 객체지향 설계자가 되기 위해 거쳐야 할 첫 번째 도전은 </span><br><span class="line">코드를 담는 클래스의 관점에서 메시지를 주고받는 객체의 관점으로 사고의 중심을 전환하는 것이다.</span><br><span class="line">클래스의 구조와 메서드가 아니라 객체의 역할, 책임, 협력에 집중하라. </span><br><span class="line">객체지향은 객체를 지향하는 것이지 클래스를 지향하는 것이 아니다.</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/2/" class="post-title-link" itemprop="url">books/객체지향의사실과오해/2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/2/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/books/객체지향의사실과오해/2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="객체지향과-인지능력"><a href="#객체지향과-인지능력" class="headerlink" title="객체지향과 인지능력"></a>객체지향과 인지능력</h1><ul>
+<li>고개를 들어 주위를 둘러보면 객체라고 부를 수 있는 다양한 존재를 볼 수 있다.<ul>
+<li>길을 걷는 사람들</li>
+<li>도로위를 미끄러지듯 지나가는 자동차</li>
+<li>도시의 적막함을 감싸주는 푸른 가로수</li>
+<li>책상위에 놓여진 컴퓨터와 모니터</li>
+<li>하나의 단위로 인식할 수 있고 다른 사물과 구분할 수 있는 모든것들이 모여 객체의 스펙트럼을 형성한다.</li>
+</ul>
+</li>
+<li>추상적인 사물까지도 객체로 인식할 수 있게한다.<ul>
+<li>오늘의 주문 내역</li>
+<li>어제의 주문내역</li>
+<li>주문과 계좌이체</li>
+</ul>
+</li>
+<li>객체지향 패러다임의 목적은 현실 세계를 모방하는 것이 아니라 현실 세계를 기반으로 새로운 세계를 창조하는것이다.</li>
+</ul>
+<h1 id="앨리스-객체"><a href="#앨리스-객체" class="headerlink" title="앨리스 객체"></a>앨리스 객체</h1><ul>
+<li>엘리스의 상태를 결정하는 것은 행동이지만 행동의 결과를 결정하는 것은 상태다.</li>
+<li>어떤 행동의 성공 여부는 이전에 어떤 행동들이 발생했는지에 영향을 받는다.</li>
+<li>앨리스의 특징<ul>
+<li>앨리스는 상태를 가지며 상태는 변경 가능하다.</li>
+<li>앨리스의 상태를 변경 시키는 것은 앨리스의 행동이다.<ul>
+<li>행동의 결과는 상태에 의존적이며 상태를 이용해 서술할 수 있다.</li>
+<li>행동의 순서가 결과에 영향을 미친다.</li>
+</ul>
+</li>
+<li>앨리스는 어떤 상태에 있더라도 유일하게 식별 가능하다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="객체"><a href="#객체" class="headerlink" title="객체"></a>객체</h1><ul>
+<li>다른 사물과 구분할 수 있으며, 생성 시점을 알 수 있고, 독립적인 하나의 단위로 인식할 수 있는 모든 사물은 객체다.</li>
+<li>객체의 다양한 특성을 효과적으로 설명하기 위해서는 객체를 ₩상태(state), 행동(behavior), 식별자(identity)₩를 비닌 실체로 보는 것이 가장 효과적이다. </li>
+</ul>
+<h1 id="상태"><a href="#상태" class="headerlink" title="상태"></a>상태</h1><ul>
+<li>여행을 위해 비행기를 이용하려면 탑승 전 항공권을 발생했느냐에 따라 좌우된다.</li>
+<li>비행기 탑승 여부는 과거에 항공권을 발권하는 행동이 발생했는지 여부에 따라 달라지는 것이다.</li>
+<li>상태는 특정 시점에 객체가 가지고 있는 정보의 집합으로 객체의 구조적 특징을 표현한다. 객체의 상태는 객체에 존재하는 정적인 프로퍼티와 동적인 프로퍼티 값으로 구성된다. 객체의 프로퍼티는 단순한 값과 다른 객체를 참조하는 링크로 구분할 수 있다.</li>
+</ul>
+<h1 id="행동"><a href="#행동" class="headerlink" title="행동"></a>행동</h1><ul>
+<li>객체의 행동은 상태에 영향을 받는다 : 상호작용이 현재의 상태에 어떤 방식으로 의존하는가.</li>
+<li>객체의 행동은 상태를 변경시킨다 : 상호작용이 어떻게 현재의 상태를 변경시키는가.</li>
+<li>행동이란 외부의 요청 또는 수신된 메세지에 응답하기 위해 동작하고 반응하는 활동이다. 행동의 결과로 객체는 자신의 항태를 변경하거나 다른 객체에게 메세지를 전달할 수 잇다. 객체는 행동을 통해 다른 객체와의 협력에 참여하므로 행동은 외부에 가시적이어야한다.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/4/" class="post-title-link" itemprop="url">books/객체지향의사실과오해/4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/4/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/books/객체지향의사실과오해/4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="역할-책임-협력"><a href="#역할-책임-협력" class="headerlink" title="역할, 책임, 협력"></a>역할, 책임, 협력</h1><p>우리 모두를 합친 것보다 더 현명한 사람은 없다.</p>
+<h2 id="협력"><a href="#협력" class="headerlink" title="협력"></a>협력</h2><p>협력의 본질은 요청과 응답으로 연결되는 사람들의 네트워크다. 일반적으로 우리가 직면하게 되는 문제는 혼자만의 힘으로는 해결하기 어렵기 때문에 해결 과정에 여러 사람이 참여하게 된다. 이 과정 속에서 요청과 응답의 연쇄적인 흐름이 발생한다.</p>
+<ul>
+<li>협력은 한 사람이 다른 사람에게 도움을 요청할 때 시작된다.</li>
+<li>요청을 받은 사람은 일을 처리한 후 요청한 사람에게 필요한 지식이나 서비스를 제공하는 것으로 요청에 응답한다.</li>
+<li>결과적으로 협력은 다수의 요청과 응답으로 구성되며 전체적으로 협력은 다수의 연쇄적인 요청과 응답의 흐름으로 구성된다.<ul>
+<li>개인적으로 연쇄적인 요청과 응답이 많아질수록 애플리케이션의 복잡도가 증가한다고 생각함. 코드의 가독성이 오히려 떨어지는 경우를 자주 봄</li>
+</ul>
+</li>
+</ul>
+<h2 id="재판속의-협력"><a href="#재판속의-협력" class="headerlink" title="재판속의 협력"></a>재판속의 협력</h2><ul>
+<li>누군가가 왕에게 재판을 요청</li>
+<li>왕이 하얀 토끼에게 증인을 부를것을 요청</li>
+<li>토끼는 모자장수에게 증인석으로 입장할것을 요청</li>
+<li>모자장수는 증인석에 입장 함으로써 응답</li>
+<li>왕은 모자장수에게 증언할 것을 요청</li>
+<li>모자장수는 자신이 알고있는 내용을 증언함으로써 왕의 요청에 응답</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 누군가 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> 재판요청로직() &#123;</span><br><span class="line">		왕 w = <span class="keyword">new</span> 왕();</span><br><span class="line">		재판결과 결과 = 왕.재판하라();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(결과 == <span class="string">"유죄"</span>) &#123;</span><br><span class="line">			<span class="comment">// todo </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (결과 == <span class="string">"무죄"</span>) &#123;</span><br><span class="line">			<span class="comment">// todo </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 왕 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> 재판결과 재판하라()&#123;</span><br><span class="line">		토끼 하얀토끼 = <span class="keyword">new</span> 토끼();</span><br><span class="line">		증인 증인 = 하얀토끼.증인을호출하라();</span><br><span class="line">		</span><br><span class="line">		증언 증언 = 증인.증언하라();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> 내부_재판(증언);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> 재판결과 내부_재판(증언 증언) &#123;</span><br><span class="line">		<span class="keyword">return</span> 재판결과;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 토끼 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> 증인 증인을호출하라()&#123;</span><br><span class="line">		모자장수 증인 = <span class="keyword">new</span> 모자장수();</span><br><span class="line">		<span class="keyword">return</span> 증인;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 모자장수 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> 증언 증언하라()&#123;</span><br><span class="line">		<span class="keyword">return</span> 증언;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="책임"><a href="#책임" class="headerlink" title="책임"></a>책임</h2><ul>
+<li>객체지향 개발에서 가장 중요한 능력은 책임을 능숙하게 소프트웨어 객체에 할당하는 것</li>
+<li>객체가 하는 것<ul>
+<li>객체를 생성하거나 계산을 하는 등의 스스로 하는 것</li>
+<li>다른 객체의 행동을 시작시키는 것</li>
+<li>다른 객체의 활동을 제어하고 조절 하는 것</li>
+</ul>
+</li>
+<li>객체가 아는 것<ul>
+<li>개인적인 정보에 관해 아는 것</li>
+<li>관련된 객체에 관해 아는 것</li>
+<li>자신이 유도하거나 계산할 수 있는 것에 관해 아는 것</li>
+</ul>
+</li>
+<li>객체의 책임을 이야기할 때는 일반적으로 외부에서 접근 가능한 공용 서비스의 관점에서 이야기한다.</li>
+<li>즉 아는것, 하는것만 보여준다.</li>
+<li>따라서 책임은 객체의 공용 인터페이스를 구성한다.</li>
+<li>설계를 시작하는 초반에는 어떤 객체가 어떤 책임을 가지고 어떤 방ㅅ핵으로 서로 협력해야 하는지에 대한 개요를 아는 것만으로도 충분하다.</li>
+</ul>
+<h2 id="역할"><a href="#역할" class="headerlink" title="역할"></a>역할</h2><ul>
+<li>재판이라는 협력 과정 속에서 왕과 하트여왕은 <code>판사</code> 역할, 모자 장수와 요리사 그리고 엘리스는 <code>증인</code>역할을 수행한다.</li>
+<li>따라서 다음과 같이 역할과 협력으로 추상화할 수 있다.<ul>
+<li>누군가 <code>판사</code>에게 재판을 요청</li>
+<li><code>판사</code>는 하얀 토끼에게 증인을 부를것 요청</li>
+<li><code>판사</code>의 요청을 받은 토끼는 <code>증인</code>에게 증인석으로 입장할 것을 요청</li>
+<li><code>증인</code>은 증인석에 입장함으로써 응답</li>
+<li><code>증인</code>의 입장은 연쇄적으로 토끼에 대한 <code>판사</code>의 요청에대한 응답</li>
+<li>이제 <code>판사</code>는 <code>증인</code>에게 증언할 것을 요청</li>
+<li><code>증인</code>은 자신이 알고있는 내용을 증엏남으로써 <code>판사</code>의 요청에 응답</li>
+</ul>
+</li>
+<li>요약하면 역할의 개념을 사용하면 유사한 협력을 추상화해서 인지 과부하를 줄일 수 있다.</li>
+<li>역할은 객체 지향 설계의 단순성, 유연성, 재사용성을 뒷받침하는 핵심 개념이다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 누군가 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> 재판요청로직() &#123;</span><br><span class="line">		판사 w = <span class="keyword">new</span> 왕();</span><br><span class="line">		재판결과 결과 = 왕.재판하라();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(결과 == <span class="string">"유죄"</span>) &#123;</span><br><span class="line">			<span class="comment">// todo </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (결과 == <span class="string">"무죄"</span>) &#123;</span><br><span class="line">			<span class="comment">// todo </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 왕 <span class="keyword">implements</span> 판사 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> 재판결과 재판하라()&#123;</span><br><span class="line">		토끼 하얀토끼 = <span class="keyword">new</span> 토끼();</span><br><span class="line">		증인 증인 = 하얀토끼.증인을호출하라();</span><br><span class="line">		</span><br><span class="line">		증언 증언 = 증인.증언하라();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> 내부_재판(증언);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> 재판결과 내부_재판(증언 증언) &#123;</span><br><span class="line">		<span class="keyword">return</span> 재판결과;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 여왕 <span class="keyword">implements</span> 판사 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> 재판결과 재판하라()&#123;</span><br><span class="line">		토끼 하얀토끼 = <span class="keyword">new</span> 토끼();</span><br><span class="line">		증인 증인 = 하얀토끼.증인을호출하라();</span><br><span class="line">		</span><br><span class="line">		증언 증언 = 증인.증언하라();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> 내부_재판(증언);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> 재판결과 내부_재판(증언 증언) &#123;</span><br><span class="line">		<span class="keyword">return</span> 재판결과;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 토끼 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> 증인 증인을호출하라()&#123;</span><br><span class="line">		증인 증인 = <span class="keyword">new</span> 모자장수();</span><br><span class="line">		<span class="keyword">return</span> 증인;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 모자장수 <span class="keyword">implements</span> 증인 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> 증언 증언하라()&#123;</span><br><span class="line">		<span class="keyword">return</span> 증언;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 엘리스 <span class="keyword">implements</span> 증인 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> 증언 증언하라()&#123;</span><br><span class="line">		<span class="keyword">return</span> 증언;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> 증인 </span>&#123;</span><br><span class="line">	증언 증언하라();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> 판사 </span>&#123;</span><br><span class="line">	재판결과 재판하라();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="대체가능성"><a href="#대체가능성" class="headerlink" title="대체가능성"></a>대체가능성</h2><ul>
+<li>역할은 협력 안에서 구체적인 객체로 대체될 수 있는 추상적인 협력자다.</li>
+<li>객체가 주어진 책임 이외에 다른 책임을 수행할 수도 있다는 사실에 주목하라.</li>
+</ul>
+<h2 id="흔한-오류"><a href="#흔한-오류" class="headerlink" title="흔한 오류"></a>흔한 오류</h2><ul>
+<li>데이터 먼저 개발 노노!</li>
+<li>협력에 따라 흐르는 객체의 책임에 맞춰서 개발하자.</li>
+<li>객체에게 책임을 할당하고 나면 책임으 ㄴ객체가 와부에 제공하게 될 행동이 된다.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/readme/" class="post-title-link" itemprop="url">books/객체지향의사실과오해/readme</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/books/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%EC%82%AC%EC%8B%A4%EA%B3%BC%EC%98%A4%ED%95%B4/readme/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/books/객체지향의사실과오해/readme/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="객체지향의-사실과-오해-책-정리"><a href="#객체지향의-사실과-오해-책-정리" class="headerlink" title="객체지향의 사실과 오해 책 정리"></a>객체지향의 사실과 오해 책 정리</h1><ol>
+<li><a href="./1.md">협력하는 객체들의 공동체</a></li>
+<li><a href="./2.md">이상한 나라의 객체</a></li>
+<li><a href="./4.md">역할, 책임, 협력</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Security/XSS/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/Security/XSS/README/" class="post-title-link" itemprop="url">Security/XSS/README</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/Security/XSS/README/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Security/XSS/README/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="XSS-Cross-Site-Scripting"><a href="#XSS-Cross-Site-Scripting" class="headerlink" title="XSS(Cross Site Scripting)"></a>XSS(Cross Site Scripting)</h1><p>지금 껏 HTTP서버 개발을 진행해왔지만, 웹 취약점에 대해 이제서야 생각해보게 된 것이 너무 부끄러워 쓰는 글이다. 만들고있는 RESTServer Lib에 추가해도 좋을 법한..</p>
+<h4 id="XSS란"><a href="#XSS란" class="headerlink" title="XSS란?"></a>XSS란?</h4><p>XSS는 공격자에 의해 악의적으로 작성된 스크립트가 다른 사용자에게 전달 되는 것을 의미한다. 가볍게는 페이지를 Redirection 시키는 일을 할 수 있고, 더 나아가 세션 정보를 탈취하는 등 심각한 이슈를 초래할 수 있다.</p>
+<h4 id="동작원리"><a href="#동작원리" class="headerlink" title="동작원리"></a>동작원리</h4><ol>
+<li>XSS 방어조치가 안되어있는 서버에 악의적인 스크립트를 작성하여 저장한다.</li>
+<li>웹 서비스 이용자가 해당 스크립트에 접근한다.</li>
+<li>웹서버에서 접근한 사용자에게 코드를 전달한다.</li>
+<li>사용자 시스템 (웹 브라우져)에서 XSS 코드를 실행한다.</li>
+<li>공격 성공!!</li>
+</ol>
+<pre>
+생각해보면, 간단하다. XSS 방어조치가 되어있지 않은 웹 서버에 스크립트를 저장하고, 
+다른 피해자들이 그 스크립트를 접근하는 그런 원리다. 
+결국 다른 피해자들은 브라우져를 통해 접근할테니, 스크립트를 온전히 읽어버리는 것이다.
+</pre>
+
+<h4 id="방어조치"><a href="#방어조치" class="headerlink" title="방어조치"></a>방어조치</h4><p>가장 심플하게, 저장되는 글에 부등식기호(&lt;, &gt;)를 &lt; &gt; 등으로 Replace하여 저장하는 방법이 있다. 혹은 <script>가 포함된 글은 무시한다던지..</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">description = description.replace(<span class="string">'&lt;'</span>, <span class="string">'&amp;lt;'</span>)</span><br><span class="line">description = description.replace(<span class="string">'&gt;'</span>, <span class="string">'&amp;gt;'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="실습"><a href="#실습" class="headerlink" title="실습"></a>실습</h4><ol>
+<li>웹 서버를 준비한다.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/local/bin/python3</span></span><br><span class="line">print(<span class="string">"Content-Type: text/html"</span>)</span><br><span class="line">print()</span><br><span class="line"><span class="keyword">import</span> cgi, os, view</span><br><span class="line"> </span><br><span class="line">form = cgi.FieldStorage()</span><br><span class="line"><span class="keyword">if</span> <span class="string">'id'</span> <span class="keyword">in</span> form:</span><br><span class="line">    pageId = form[<span class="string">"id"</span>].value</span><br><span class="line">    description = open(<span class="string">'data/'</span>+pageId, <span class="string">'r'</span>).read()</span><br><span class="line">    update_link = <span class="string">'&lt;a href="update.py?id=&#123;&#125;"&gt;update&lt;/a&gt;'</span>.format(pageId)</span><br><span class="line">    delete_action = <span class="string">'''</span></span><br><span class="line"><span class="string">        &lt;form action="process_delete.py" method="post"&gt;</span></span><br><span class="line"><span class="string">            &lt;input type="hidden" name="pageId" value="&#123;&#125;"&gt;</span></span><br><span class="line"><span class="string">            &lt;input type="submit" value="delete"&gt;</span></span><br><span class="line"><span class="string">        &lt;/form&gt;</span></span><br><span class="line"><span class="string">    '''</span>.format(pageId)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    pageId = <span class="string">'Welcome'</span></span><br><span class="line">    description = <span class="string">'Hello, web'</span></span><br><span class="line">    update_link = <span class="string">''</span></span><br><span class="line">    delete_action = <span class="string">''</span></span><br><span class="line">print(<span class="string">'''&lt;!doctype html&gt;</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">  &lt;title&gt;WEB1 - Welcome&lt;/title&gt;</span></span><br><span class="line"><span class="string">  &lt;meta charset="utf-8"&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">  &lt;h1&gt;&lt;a href="index.py"&gt;WEB&lt;/a&gt;&lt;/h1&gt;</span></span><br><span class="line"><span class="string">  &lt;ol&gt;</span></span><br><span class="line"><span class="string">    &#123;listStr&#125;</span></span><br><span class="line"><span class="string">  &lt;/ol&gt;</span></span><br><span class="line"><span class="string">  &lt;a href="create.py"&gt;create&lt;/a&gt;</span></span><br><span class="line"><span class="string">  &#123;update_link&#125;</span></span><br><span class="line"><span class="string">  &#123;delete_action&#125;</span></span><br><span class="line"><span class="string">  &lt;h2&gt;&#123;title&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">  &lt;p&gt;&#123;desc&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">'''</span>.format(</span><br><span class="line">    title=pageId,</span><br><span class="line">    desc=description,</span><br><span class="line">    listStr=view.getList(),</span><br><span class="line">    update_link=update_link,</span><br><span class="line">    delete_action=delete_action))</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>웹 페이지에서 스크립트를 입력한다.</li>
+</ol>
+<p><img src="./Images/board.jpg" alt=""></p>
+<ol start="3">
+<li>결과 확인.</li>
+</ol>
+<h4 id="references"><a href="#references" class="headerlink" title="references"></a>references</h4><ol>
+<li><a href="https://opentutorials.org/course/3256/19935" target="_blank" rel="noopener">https://opentutorials.org/course/3256/19935</a></li>
+<li><a href="https://terms.naver.com/entry.nhn?docId=3431916&amp;cid=58437&amp;categoryId=58437" target="_blank" rel="noopener">https://terms.naver.com/entry.nhn?docId=3431916&amp;cid=58437&amp;categoryId=58437</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/README/" class="post-title-link" itemprop="url">README</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/README/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/README/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="TIL-Today-I-Learned"><a href="#TIL-Today-I-Learned" class="headerlink" title="TIL (Today I Learned)"></a>TIL (Today I Learned)</h1><p>📝 오늘 내가 무엇을 배웠는지 정리하고 기록합니다.</p>
+<h2 id="자료구조-amp-알고리즘"><a href="#자료구조-amp-알고리즘" class="headerlink" title="자료구조 &amp; 알고리즘"></a>자료구조 &amp; 알고리즘</h2><ol>
+<li><a href="https://github.com/JoHwanhee/DataStructures/blob/master/LinkedList.c" target="_blank" rel="noopener">Double Linked List</a></li>
+<li><a href="https://github.com/JoHwanhee/DataStructures/blob/master/Stack.c" target="_blank" rel="noopener">A stack using singly linked list</a></li>
+<li><a href="https://github.com/JoHwanhee/DataStructures/blob/master/Queue.c" target="_blank" rel="noopener">Queue</a></li>
+<li><a href="https://github.com/JoHwanhee/DataStructures/blob/master/Stack.c" target="_blank" rel="noopener">Tree</a></li>
+<li><a href="https://github.com/JoHwanhee/DataStructures/tree/master/BinaryExpressionTree/src" target="_blank" rel="noopener">Binary Expression Tree</a></li>
+<li><a href="https://github.com/JoHwanhee/DataStructures/blob/master/dictionary.h" target="_blank" rel="noopener">Dictionary without hash</a></li>
+<li><a href="https://github.com/JoHwanhee/JaccardSimilarity" target="_blank" rel="noopener">Jaccard similarity</a></li>
+<li><a href="./Algorithm/quickSort.c">Quick Sort</a></li>
+<li><a href="./Algorithm/insertSort.c">Insert Sort</a></li>
+<li><a href="https://github.com/JoHwanhee/DataStructures/blob/master/BST.c" target="_blank" rel="noopener">Binary Search Tree</a></li>
+<li><a href="https://github.com/JoHwanhee/DataStructures/blob/master/hashtable.c" target="_blank" rel="noopener">HashTable</a></li>
+<li><a href="./Algorithm/climb.c">Climb</a></li>
+<li><a href="https://github.com/JoHwanhee/DataStructures/blob/master/graph.c" target="_blank" rel="noopener">Graph</a></li>
+<li><a href="./Algorithm/bfsdfs.c">BFS, DFS</a></li>
+</ol>
+<h2 id="개발-책-읽기"><a href="#개발-책-읽기" class="headerlink" title="개발 책 읽기"></a>개발 책 읽기</h2><ol>
+<li><a href="./books/객체지향의사실과오해">객체지향의 사실과 오해</a></li>
+</ol>
+<h2 id="프로젝트-회고"><a href="#프로젝트-회고" class="headerlink" title="프로젝트 회고"></a>프로젝트 회고</h2><ol>
+<li><a href="./prj/chatbot.md">사내프로젝트-챗봇플랫폼개발</a></li>
+<li><a href="./prj/flutter.md">사내프로젝트-플러터학습</a></li>
+</ol>
+<h2 id="CS"><a href="#CS" class="headerlink" title="CS"></a>CS</h2><ol>
+<li><a href="./CS/compile.md">실행, CPU, 컴파일</a></li>
+<li><a href="./CS/Windows.md">윈도우 시스템프로그래밍</a></li>
+</ol>
+<h2 id="ML"><a href="#ML" class="headerlink" title="ML"></a>ML</h2><ol>
+<li><a href="./ML/tf001.md">Tensorflow Object Detection API 호출하는 코드 만들기</a></li>
+<li><a href="./ML/tf002.md">자신만의 데이터셋(소규모)으로 재학습 시켜보기</a></li>
+<li><a href="./ML/tf003.md">tf.estimator 사용해서 성능 측정 해보기</a></li>
+</ol>
+<h2 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h2><ol>
+<li><a href="./TDD/의식적연습으로TDD,리팩토링하기.MD">의식적 연습으로 TDD, 리팩토링 연습하기</a></li>
+</ol>
+<h2 id="운영체제"><a href="#운영체제" class="headerlink" title="운영체제"></a>운영체제</h2><h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><ol>
+<li><a href="./Linux/run_background_when_ssh_exit.md">프로세스 유지한채 ssh exit하는 방법</a></li>
+<li><a href="./Linux/makingFTP.md">CentOS vsftpd 설치 및 설정</a></li>
+</ol>
+<h2 id="프로그래밍-언어"><a href="#프로그래밍-언어" class="headerlink" title="프로그래밍 언어"></a>프로그래밍 언어</h2><h4 id="C"><a href="#C" class="headerlink" title="C"></a>C</h4><ol>
+<li><a href="./C/object_type_variables.md">Object, Types, Variables</a></li>
+<li><a href="./C/pointer.md">Pointer</a></li>
+</ol>
+<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><ol>
+<li><a href="./CSS">CSS 기본 개념</a></li>
+<li><a href="./CSS/Selector.md">CSS 선택자를 스스로 알아내는 방법</a></li>
+<li><a href="./CSS/boxmodel.md">CSS 박스모델</a></li>
+<li><a href="./CSS/grid.md">CSS Grid</a></li>
+<li><a href="./CSS/mediaquery.md">CSS MediaQuery</a></li>
+</ol>
+<h4 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h4><ol>
+<li><a href="./JS">js 기본 개념</a></li>
+</ol>
+<h4 id="Node-Js"><a href="#Node-Js" class="headerlink" title="Node.Js"></a>Node.Js</h4><ol>
+<li><a href="./nodejs">node js 기본 설정</a></li>
+</ol>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><ol>
+<li><a href="./Python/__init__.md">__init.py 파일이란?</a></li>
+<li><a href="./Python/venv.md">가상환경이란?</a></li>
+</ol>
+<h2 id="네트워크"><a href="#네트워크" class="headerlink" title="네트워크"></a>네트워크</h2><h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><ol>
+<li><a href="./HTTP/The_basic_of_web.md">The basic of HTTP</a></li>
+<li><a href="./HTTP/RestAPI">그런 REST API로 괜찮은가?</a></li>
+<li><a href="./HTTP/NIOHttpServer/day1.md">Java로 Http 라이브러리 만들어보기-1</a></li>
+</ol>
+<h2 id="보안"><a href="#보안" class="headerlink" title="보안"></a>보안</h2><h4 id="웹-보안"><a href="#웹-보안" class="headerlink" title="웹 보안"></a>웹 보안</h4><ol>
+<li><a href="./Security/XSS/">XSS(Cross Site Scripting)</a><br>FLUSH PRIVILEGES;</li>
+</ol>
+<h2 id="Eglish"><a href="#Eglish" class="headerlink" title="Eglish"></a>Eglish</h2><h4 id="Rapunzel-받아쓰기-따라읽기"><a href="#Rapunzel-받아쓰기-따라읽기" class="headerlink" title="Rapunzel 받아쓰기, 따라읽기"></a>Rapunzel 받아쓰기, 따라읽기</h4><ol>
+<li><a href="./English/Rapunzel/0000_0235.md">Rapunzel 받아쓰기, 따라읽기 00:00 ~ 02:35</a></li>
+<li><a href="./English/Rapunzel/0235_0500.md">Rapunzel 받아쓰기, 따라읽기 02:35 ~ 05:00</a></li>
+<li><a href="./English/Rapunzel/0500_0823.md">Rapunzel 받아쓰기, 따라읽기 05:00 ~ 08:23</a></li>
+<li><a href="./English/Rapunzel/0823_1034.md">Rapunzel 받아쓰기, 따라읽기 08:23 ~ 10:34</a></li>
+<li><a href="./English/Rapunzel/1034_1237.md">Rapunzel 받아쓰기, 따라읽기 10:34 ~ 12:37</a></li>
+<li><a href="./English/Rapunzel/1237_1251.md">Rapunzel 받아쓰기, 따라읽기 12:37 ~ 12:51</a></li>
+</ol>
+<h4 id="독해연습"><a href="#독해연습" class="headerlink" title="독해연습"></a>독해연습</h4><ol>
+<li><a href="./English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes.md">How to Lose an IT Job in 10 Minutes - 1</a></li>
+</ol>
+<h2 id="공부하면서-참고한-사이트들-모음"><a href="#공부하면서-참고한-사이트들-모음" class="headerlink" title="공부하면서 참고한 사이트들 모음"></a>공부하면서 참고한 사이트들 모음</h2><ol>
+<li><a href="https://www.geeksforgeeks.org/data-structures/" target="_blank" rel="noopener">Geeks for Geeks</a></li>
+<li><a href="http://soen.kr/" target="_blank" rel="noopener">soen.kr, 구 winapi</a></li>
+<li><a href="https://wikidocs.net/7014" target="_blank" rel="noopener">초보자를 위한 파이썬 1 ~ 300제</a></li>
+<li><a href="http://pythonstudy.xyz/" target="_blank" rel="noopener">예제로 배우는 파이썬 프로그래밍</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Python/venv/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/Python/venv/" class="post-title-link" itemprop="url">Python/venv</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/Python/venv/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Python/venv/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="가상환경이란"><a href="#가상환경이란" class="headerlink" title="가상환경이란?"></a>가상환경이란?</h3><p>프로젝트를 진행하다보면 외부 패키지의 버전관리와 디펜던시 관리는 필수적으로 진행되어야 한다. 파이썬에서는 디펜던시 관리를 가상환경으로 관리를 하고 있다.</p>
+<hr>
+<h3 id="설정"><a href="#설정" class="headerlink" title="설정"></a>설정</h3><p>python에서 제공되는 기능으로 간단히 설정할 수 있다. 아래처럼 하면 가상환경 폴더가 생성된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@s16786679aff testProject]# python3 -m venv venv</span><br><span class="line">[root@s16786679aff testProject]# ls</span><br><span class="line">venv</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="활성화"><a href="#활성화" class="headerlink" title="활성화"></a>활성화</h3><p>설정이 되었다면 아래와 같이 활성화를 해준다. (venv)가 보이면 성공.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@s16786679aff testProject]# source venv&#x2F;bin&#x2F;activate</span><br><span class="line">(venv) [root@s16786679aff testProject]#</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="패키지-설치해보기"><a href="#패키지-설치해보기" class="headerlink" title="패키지 설치해보기"></a>패키지 설치해보기</h3><p>Flask를 설치하고 실행해보자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(venv) [root@s16786679aff testProject]#pip3 install flask</span><br><span class="line">(중략)</span><br><span class="line">Successfully installed Jinja2-2.10 MarkupSafe-1.1.1 Werkzeug-0.14.1 click-7.0 flask-1.0.2 itsdangerous-1.1.0</span><br></pre></td></tr></table></figure>
+
+<p>소스 작성</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello World!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<p>동작 확인</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(venv) [root@s16786679aff testProject]# python3 app.py</span><br><span class="line"> * Serving Flask app &quot;app&quot; (lazy loading)</span><br><span class="line"> * Environment: production</span><br><span class="line">   WARNING: Do not use the development server in a production environment.</span><br><span class="line">   Use a production WSGI server instead.</span><br><span class="line"> * Debug mode: off</span><br><span class="line"> * Running on http:&#x2F;&#x2F;127.0.0.1:5000&#x2F; (Press CTRL+C to quit)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="가상환경-종료"><a href="#가상환경-종료" class="headerlink" title="가상환경 종료"></a>가상환경 종료</h3><p>아래와 같이 가상환경을 빠져나올 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(venv) [root@s16786679aff testProject]# deactivate</span><br><span class="line">[root@s16786679aff testProject]#</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="디펜던시-관리하기-requirements-txt"><a href="#디펜던시-관리하기-requirements-txt" class="headerlink" title="디펜던시 관리하기 requirements.txt"></a>디펜던시 관리하기 requirements.txt</h3><p>아래와 같이 입력하면 requirements.txt 파일이 생성된걸 볼 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@s16786679aff testProject]# pip freeze &gt; requirements.txt</span><br><span class="line">[root@s16786679aff testProject]# ls</span><br><span class="line">app.py  requirements.txt  venv</span><br></pre></td></tr></table></figure>
+
+<p>vi requirements.txt 로 열어보면 현재 관리되고 있는 디펜던시를 확인할 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> 1 bottle&#x3D;&#x3D;0.12.16</span><br><span class="line"> 2 Click&#x3D;&#x3D;7.0</span><br><span class="line"> 3 docutils&#x3D;&#x3D;0.14</span><br><span class="line"> 4 EasyProcess&#x3D;&#x3D;0.2.3</span><br><span class="line"> 5 Flask&#x3D;&#x3D;1.0.2</span><br><span class="line"> 6 itsdangerous&#x3D;&#x3D;1.1.0</span><br><span class="line"> 7 Jinja2&#x3D;&#x3D;2.10</span><br><span class="line"> 8 lockfile&#x3D;&#x3D;0.12.2</span><br><span class="line"> 9 MarkupSafe&#x3D;&#x3D;1.1.0</span><br><span class="line">10 pidlockfile&#x3D;&#x3D;0.3</span><br><span class="line">11 python-daemon&#x3D;&#x3D;2.2.0</span><br><span class="line">12 PyVirtualDisplay&#x3D;&#x3D;0.2.1</span><br><span class="line">13 selenium&#x3D;&#x3D;3.141.0</span><br><span class="line">14 urllib3&#x3D;&#x3D;1.24.1</span><br><span class="line">15 Werkzeug&#x3D;&#x3D;0.14.1</span><br></pre></td></tr></table></figure>
+
+<p>새로운 패키지를 추가하고 pip install -r requirements.txt를 통해 패키지를 관리할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="다음 페이지"></i></a>
+  </nav>
 
 
 
@@ -289,7 +1383,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>

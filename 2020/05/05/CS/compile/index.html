@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"johwanhee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="실행의 정의  실행이란?  CPU가 알아 들을 수 있는 명령을 하는 것 사용자 명령 test.exe -&gt; 실행 이미지 로드 -&gt; (COPY) -&gt; 인스턴스(Process) 생성 RAM -&gt; 기계어 코드 실행 기계어를 가지고 있는 실행 파일을 하드디스크로부터 주기억장치로 복사한 후에 인스턴스로 만들고 관리할 수 있도록 체계를 부여한 후에">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS&#x2F;compile">
+<meta property="og:url" content="https://johwanhee.github.io/2020/05/05/CS/compile/index.html">
+<meta property="og:site_name" content="Good day to code">
+<meta property="og:description" content="실행의 정의  실행이란?  CPU가 알아 들을 수 있는 명령을 하는 것 사용자 명령 test.exe -&gt; 실행 이미지 로드 -&gt; (COPY) -&gt; 인스턴스(Process) 생성 RAM -&gt; 기계어 코드 실행 기계어를 가지고 있는 실행 파일을 하드디스크로부터 주기억장치로 복사한 후에 인스턴스로 만들고 관리할 수 있도록 체계를 부여한 후에">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/program.jpg">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/cpu.jpg">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/cycle.jpg">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/compile.png">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/gcc.png">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/gccc.png">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/front.png">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/middle.png">
+<meta property="og:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/back.png">
+<meta property="article:published_time" content="2020-05-05T14:53:48.248Z">
+<meta property="article:modified_time" content="2020-05-05T14:53:48.248Z">
+<meta property="article:author" content="hwanhee jo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://johwanhee.github.io/2020/05/05/CS/compile/img/program.jpg">
+
+<link rel="canonical" href="https://johwanhee.github.io/2020/05/05/CS/compile/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'ko'
+  };
+</script>
+
+  <title>CS/compile | Good day to code</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good day to code</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">거 코딩하기 딱 좋은 날씨네</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>태그</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>아카이브</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/CS/compile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CS/compile
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/CS/compile/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/CS/compile/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="실행의-정의"><a href="#실행의-정의" class="headerlink" title="실행의 정의"></a>실행의 정의</h1><p><img src="./img/program.jpg" alt=""></p>
+<ol>
+<li><p>실행이란?</p>
+<ul>
+<li>CPU가 알아 들을 수 있는 명령을 하는 것</li>
+<li>사용자 명령 test.exe -&gt; 실행 이미지 로드 -&gt; (COPY) -&gt; 인스턴스(Process) 생성 RAM -&gt; 기계어 코드 실행</li>
+<li>기계어를 가지고 있는 실행 파일을 하드디스크로부터 주기억장치로 복사한 후에 인스턴스로 만들고 관리할 수 있도록 체계를 부여한 후에 CPU가 하나씩 실행하는 것</li>
+</ul>
+</li>
+<li><p>CPU의 역할은 무엇인가?</p>
+<ul>
+<li>연산!!!</li>
+</ul>
+</li>
+<li><p>기계어란 무엇인가?</p>
+<ul>
+<li>CPU 제조사 : intel, amd, arm</li>
+<li>intel, amd 프로세서는 x86 호환 프로세서다.</li>
+<li>CPU가 일을 하기 위해서 명령을 내려야 하는데, 이 명령어가 기계어다.</li>
+</ul>
+</li>
+<li><p>32bit platform 이란 무엇인가?</p>
+<ul>
+<li>메인 메모리가 32bit의 주소체계로 이루어진 플랫폼</li>
+</ul>
+</li>
+<li><p>운영체제에 대해 알고 있는 것은 무엇인가?</p>
+</li>
+<li><p>프로그래밍 언어로 컴파일을 하면 기계어를 가지고 있는 실행파일을 만들 수 있다.</p>
+</li>
+</ol>
+<h1 id="CPU의-연산"><a href="#CPU의-연산" class="headerlink" title="CPU의 연산"></a>CPU의 연산</h1><p><img src="./img/cpu.jpg" alt=""></p>
+<ol>
+<li><p>CPU내부의 소량의 기억장치가 있고(레지스터) 그 것이 RAM의 정보를 읽어와서 연산을 하고 특정한 메모리에 저장한다.</p>
+<ul>
+<li>*0x0012FF7C = *0x0012FF70 + *0x0012FF74 : 0x0012FF70의 정보를 읽어와서 특정 레지스터에 저장하고, 0x0012FF74의 정보도 읽어와서 특정 레지스터에 저장해서 덧셈 연산(CPU)을 한 후에 0x0012FF7C에 대입하라.</li>
+</ul>
+</li>
+<li><p>결국 이건 메모리를 사용하는것이다. 연산은 CPU가 함!!!!</p>
+</li>
+</ol>
+<p><img src="./img/cycle.jpg" alt=""></p>
+<h1 id="컴파일-과정-정리"><a href="#컴파일-과정-정리" class="headerlink" title="컴파일 과정 정리"></a>컴파일 과정 정리</h1><h2 id="컴파일이란"><a href="#컴파일이란" class="headerlink" title="컴파일이란?"></a>컴파일이란?</h2><p><img src="./img/compile.png" alt=""></p>
+<p>사람이 이해할 수 있는 언어로 된 프로그램 코드를 컴퓨터가 이해할 수 있는 언어로 변환 하는 작업.</p>
+<p>여러 소스 파일을 컴파일해서 각 부품을 만들고 그 부품을 조립하여 하나의 실행 파일로 만든다.  </p>
+<ul>
+<li>여러 소스파일 (helloworld.h helloworld.c, test.c)</li>
+<li>부품 (helloworld.obj, test.obj)</li>
+<li>실행파일 (helloworld.exe)</li>
+</ul>
+<p>컴파일 -&gt; 링크 -&gt; 실행파일</p>
+<h2 id="GCC-컴파일-과정"><a href="#GCC-컴파일-과정" class="headerlink" title="GCC 컴파일 과정"></a>GCC 컴파일 과정</h2><p><img src="./img/gcc.png" alt=""></p>
+<p>helloworld.c -&gt; helloworld.i -&gt; helloworld.s -&gt; helloworld.o -&gt; helloworld<br>전처리 -&gt; 컴파일 -&gt; 어셈블링 -&gt; 링킹</p>
+<ol>
+<li><p>전처리 과정</p>
+<ul>
+<li><p>전처리 과정은 크게 두 부분으로 나뉘어짐</p>
+<ul>
+<li>헤더파일 삽입</li>
+<li>매크로 치환 및 적용</li>
+</ul>
+</li>
+<li><p>#define 부분을 심볼테이블에 저장 됨</p>
+</li>
+<li><p>실볼 테이블에 들어있는 문자열과 같은 문자열을 만나면 #define 된 내용으로 치환합니다. </p>
+</li>
+</ul>
+</li>
+<li><p>컴파일 과정</p>
+<ul>
+<li><p><img src="./img/gccc.png" alt=""></p>
+</li>
+<li><p>전처리 과정이 끝나면 컴파일 과정이 시작된다. </p>
+</li>
+<li><p>크게 전단부, 중단부, 후단부로 나뉘어진다.</p>
+</li>
+<li><p>전처리가 끝난 .i 파일을 컴파일하면 .s 어셈블리 코드로 이루어진 파일이 만들어진다.</p>
+</li>
+<li><p>전단부</p>
+<ul>
+<li><img src="./img/front.png" alt=""></li>
+<li>전단부에서는 언어 종속적인 부분을 처리한다.</li>
+<li>이 단계에서는 C로 작성된코드나 다른 언어로 작성된 코드들이 각각 다른 모듈에 의해 처리 된다.</li>
+<li>또한 소스코드가 올바르게 작성되었는지 분석하고, 중단부에 넘겨주기 위한 GIMPLE 트리를 생성하는 일을 수행한다.</li>
+</ul>
+</li>
+<li><p>중단부</p>
+<ul>
+<li><img src="./img/middle.png" alt=""></li>
+<li>중단부에서는 전단부에서 넘겨받은 GIMPLE 트리를 SSA(Static Single Assignment)형태로 변환한 후에 아키텍쳐 비종속적인 최적화를 수행한 후 최종적으로 후단부에서 사용하는 RTL(Register Transfer Language: 고급 언어와 어셈블리 언어의 중간 형태)을 생성합니다.</li>
+<li>아키텍쳐 비종속적인 최적화란 서로 다른 CPU 아키텍쳐에 구애받지 않고 공통적으로 수행할 수 있는 최적화를 말합니다. 중단부에서는 SSA 기반으로 최적화를 수행합니다.</li>
+</ul>
+</li>
+<li><p>후단부</p>
+<ul>
+<li><img src="./img/back.png" alt=""></li>
+<li>후단부에서는 RTL Optimizer에 의해 아키텍쳐 비종속적인 최적화와 함께 아키텍쳐 종속적인 최적화가 수행합니다. </li>
+<li>이렇게 최적화를 마치게 되면 Code Generator 어셈블리어로 구성된 .s 파일이 만들어지게 됩니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>어셈블 과정</p>
+<ul>
+<li>어셈블러에 의해 생성되는 목적코드(helloworld.o) 파일은 어셈블된 프로그램의 명령어(Instruction)과 데이터(Data)가 들어있는 ELF 바이너리 포맷(Binary format) 구조를 갖습니다. </li>
+</ul>
+</li>
+<li><p>링킹 과정 </p>
+<ul>
+<li><p>어셈블리에 의해 ELF 포맷의 목적코드 파일들이 만들어지면 이제 링커가 나설 차례입니다. 링커는 오브젝트 파일들과 여러분의 프로그램에서 사용된 표준 C 라이브러리, 사용자 라이브러리들을 링크(Link)를 합니다. </p>
+</li>
+<li><p>printf() 함수나 scanf() 등의 표준 C 라이브러리 함수들은 여러분이 직접 구현하지 않아도 미리 컴파일이 되어 있기 때문에 링크하는 과정만 거치면 사용할 수 있습니다. (표준 C 라이브러리는 별도로 명시하지 않아도 자동으로 링크됩니다)</p>
+</li>
+<li><p>이렇게 링킹 과정이 끝나면 드디어 실행 가능한 실행파일이 만들어지게 됩니다.</p>
+</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/05/C/object_type_variables/" rel="prev" title="C/object_type_variables">
+      <i class="fa fa-chevron-left"></i> C/object_type_variables
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/05/CSS/boxmodel/" rel="next" title="CSS/boxmodel">
+      CSS/boxmodel <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#실행의-정의"><span class="nav-number">1.</span> <span class="nav-text">실행의 정의</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU의-연산"><span class="nav-number">2.</span> <span class="nav-text">CPU의 연산</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#컴파일-과정-정리"><span class="nav-number">3.</span> <span class="nav-text">컴파일 과정 정리</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#컴파일이란"><span class="nav-number">3.1.</span> <span class="nav-text">컴파일이란?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCC-컴파일-과정"><span class="nav-number">3.2.</span> <span class="nav-text">GCC 컴파일 과정</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hwanhee jo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hwanhee jo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-johwanhee-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://johwanhee.github.io/2020/05/05/CS/compile/";
+    this.page.identifier = "2020/05/05/CS/compile/";
+    this.page.title = "CS/compile";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-johwanhee-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

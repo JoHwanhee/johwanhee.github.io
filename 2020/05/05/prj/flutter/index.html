@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"johwanhee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="플러터로 개발하기작년말 이사님의 추천(?)으로 올해 팀즈에서 플러터를 이용한 앱을 만들어보기로했습니다.큰 주제는 머테리얼 디자인 가이드와 플러터 학습으로 방향을 잡고 실제 서비스할 수 있는 앱을 런칭하는 것까지 목표를 세웠습니다.이번 프로젝트에서 플루터를 통해 개발 하면서 느낀 주제들(머테리얼 가이드, UI 개발, 크로스플랫폼, 생산성)에 대해 이야기해볼까">
+<meta property="og:type" content="article">
+<meta property="og:title" content="prj&#x2F;flutter">
+<meta property="og:url" content="https://johwanhee.github.io/2020/05/05/prj/flutter/index.html">
+<meta property="og:site_name" content="Good day to code">
+<meta property="og:description" content="플러터로 개발하기작년말 이사님의 추천(?)으로 올해 팀즈에서 플러터를 이용한 앱을 만들어보기로했습니다.큰 주제는 머테리얼 디자인 가이드와 플러터 학습으로 방향을 잡고 실제 서비스할 수 있는 앱을 런칭하는 것까지 목표를 세웠습니다.이번 프로젝트에서 플루터를 통해 개발 하면서 느낀 주제들(머테리얼 가이드, UI 개발, 크로스플랫폼, 생산성)에 대해 이야기해볼까">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F1hg4iTKzTMMgtJRx7bhaE2kSYR5BRYz1g%2Fcolor-colorsystem-schemecreation-theme.png">
+<meta property="og:image" content="https://flutter.dev/assets/tools/android-studio/hot-reload-36252b9c05984443ea5cd1960bab0f4ca904a6dfbe71165af4ed7f1b1c037124.gif">
+<meta property="article:published_time" content="2020-05-05T14:53:48.264Z">
+<meta property="article:modified_time" content="2020-05-05T14:53:48.264Z">
+<meta property="article:author" content="hwanhee jo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F1hg4iTKzTMMgtJRx7bhaE2kSYR5BRYz1g%2Fcolor-colorsystem-schemecreation-theme.png">
+
+<link rel="canonical" href="https://johwanhee.github.io/2020/05/05/prj/flutter/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'ko'
+  };
+</script>
+
+  <title>prj/flutter | Good day to code</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good day to code</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">거 코딩하기 딱 좋은 날씨네</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>태그</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>아카이브</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/prj/flutter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          prj/flutter
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/prj/flutter/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/prj/flutter/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="플러터로-개발하기"><a href="#플러터로-개발하기" class="headerlink" title="플러터로 개발하기"></a>플러터로 개발하기</h1><p>작년말 이사님의 추천(?)으로 올해 팀즈에서 플러터를 이용한 앱을 만들어보기로했습니다.<br>큰 주제는 머테리얼 디자인 가이드와 플러터 학습으로 방향을 잡고 실제 서비스할 수 있는 앱을 런칭하는 것까지 목표를 세웠습니다.<br>이번 프로젝트에서 플루터를 통해 개발 하면서 느낀 주제들(머테리얼 가이드, UI 개발, 크로스플랫폼, 생산성)에 대해 이야기해볼까합니다.</p>
+<h3 id="머테리얼-디자인-가이드"><a href="#머테리얼-디자인-가이드" class="headerlink" title="머테리얼 디자인 가이드"></a>머테리얼 디자인 가이드</h3><p>플러터는 구글에서 개발하고 있는 프레임워크이며 머테리얼 디자인 가이드또한 구글에서 제시하는 UI 디자인 가이드다보니,<br>프레임워크차원에서 머테리얼 디자인 가이드에 맞춰 개발을 진행할 수 있는 점이 상당히 매력적으로 다가왔습니다.</p>
+<h4 id="다음은-플러터에서-제시하는-앱-테마-코드와-구글-머테리얼-디자인-가이드입니다"><a href="#다음은-플러터에서-제시하는-앱-테마-코드와-구글-머테리얼-디자인-가이드입니다" class="headerlink" title="다음은 플러터에서 제시하는 앱 테마 코드와 구글 머테리얼 디자인 가이드입니다."></a>다음은 플러터에서 제시하는 앱 테마 코드와 구글 머테리얼 디자인 가이드입니다.</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Color lightPrimary = HexColor.fromHex(<span class="string">"fdfdfd"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightPrimaryLight = HexColor.fromHex(<span class="string">"ffffff"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightPrimaryDark = HexColor.fromHex(<span class="string">"faf8f6"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightAccent = HexColor.fromHex(<span class="string">"ff9e00"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightAccentLight = HexColor.fromHex(<span class="string">"ffd69b"</span>);</span><br><span class="line"><span class="keyword">static</span> Color lightAccentDark = HexColor.fromHex(<span class="string">"ec8102"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> ThemeData lightTheme = ThemeData(</span><br><span class="line">  fontFamily: <span class="string">"NotoSans"</span>,</span><br><span class="line">  backgroundColor: lightBG,</span><br><span class="line">  accentColor:  lightAccent,</span><br><span class="line">  primaryColorLight: lightPrimaryLight,</span><br><span class="line">  primaryColorDark: lightPrimaryDark,</span><br><span class="line">  primaryColor: lightPrimary,</span><br><span class="line">  primaryIconTheme: IconThemeData(</span><br><span class="line">    color: HexColor.fromHex(<span class="string">"c4c4c4"</span>)</span><br><span class="line">  ),</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 중략</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><img src="https://storage.googleapis.com/spec-host/mio-staging%2Fmio-design%2F1584058305895%2Fassets%2F1hg4iTKzTMMgtJRx7bhaE2kSYR5BRYz1g%2Fcolor-colorsystem-schemecreation-theme.png" alt="img"></p>
+<p>처음에는 생소한 디자인 가이드라 그런지 저도 그렇고 디자이너님도 그렇고 어떤식으로 방향을 잡아야할지 난항을 겪었으나,<br>이후 개발을 직접 진행하면서는 전체적인 스타일이 다 잡힌 상태로 개발을 하는거라 그런지 코드양이 확실히 많이 줄고 새로운 컴포넌트를 추가할때도 편리하다는 장점이 있었습니다.<br>또한 테마변경 기능이 제공되어 다크테마 / 라이트테마 적용을 정말 색상값만 추가해주기만해도 바로 적용되는 모습을 봤을 때 감격을 눈물을 감출 수 없었습니다.</p>
+<h3 id="UI-개발"><a href="#UI-개발" class="headerlink" title="UI 개발"></a>UI 개발</h3><p>플러터는 UI를 코드로 그립니다. 아래 처럼요</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> Scaffold(</span><br><span class="line">      body: SafeArea(</span><br><span class="line">        child: Center(</span><br><span class="line">            child: ListView(</span><br><span class="line">              shrinkWrap: <span class="keyword">true</span>,</span><br><span class="line">              padding: EdgeInsets.only(left: <span class="number">20.0</span>, right: <span class="number">20.0</span>),</span><br><span class="line">              children: &lt;Widget&gt;[</span><br><span class="line">                email,</span><br><span class="line">                SizedBox(height: <span class="number">8.0</span>),</span><br><span class="line">                password,</span><br><span class="line">                SizedBox(height: <span class="number">24.0</span>),</span><br><span class="line">                loginButton,</span><br><span class="line">              ],</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line"></span><br><span class="line">      ),</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+
+<p>윈도우의 XAML, 안드로이드의 XML, 웹의 HTML등 마크업으로 진행하는 UI작업에 너무 익숙해져있던지라 처음에는 굉장히 불편하고 예전 JAVA의 SWING을 떠올리기도 했습니다.</p>
+<p>개발하다보니 이는 굉장히 큰 장점으로 다가왔습니다. UI에 로직을 추가하는 일, 데이터 바인딩을 하는 일 등을 마크업과 코드를 왔다갔다하지않고 Dart코드 하나로 모두 처리할 수 있어 개발속도를 높일 수 있었습니다.</p>
+<p>그리고 가장 큰 장점으로 <code>&lt;!-- UI에 주석을 이처럼 달지않고 --&gt;</code> <code>//이와같이 달 수 있습니다!</code></p>
+<h3 id="크로스-플랫폼"><a href="#크로스-플랫폼" class="headerlink" title="크로스 플랫폼"></a>크로스 플랫폼</h3><p>크로스 플랫폼은 오히려 단점으로 다가왔습니다. 라이브러리 하나를 추가하려면 ios / android 하나 하나 확인해가며 라이브러리 수정을 해야하거나 각기 다른 환경설정을 넣어줘야했고 이후에는 라이브러리 추가하는일이 “상당히 귀찮은 일”로 자리잡게 되었습니다.<br>또한 ios와 android모두 지향하는 ux부분이 다른데, 플루터는 one code base로 진행되다보니 ios, android가 정체성없는 ux가 나오는 점이 제게는 큰 단점으로 다가왔습니다.<br>코드내에서 ios android 플랫폼 검사를하여 view를 다르게 보여줄 수 도있는데, 이는 크로스플랫폼이 추구하는 방향은 아니라고 생각되어 적용해보진 않았습니다.</p>
+<h3 id="생산성"><a href="#생산성" class="headerlink" title="생산성"></a>생산성</h3><p>확실히 앱 개발속도는 빠릅니다. 특히나 hot reload의 runtime debuging 기능은 java를 통한 android 개발과는 차원이 다른 수준의 디버깅 경험을 선사해주었습니다.<br>집에선 flutter를 하고 사무실에선 android를 하는데, 사무실에서 작업할때마다 얼른 퇴근하고싶다(?)는 생각이 들게끔 해주는 정도였습니다.</p>
+<p><img src="https://flutter.dev/assets/tools/android-studio/hot-reload-36252b9c05984443ea5cd1960bab0f4ca904a6dfbe71165af4ed7f1b1c037124.gif" alt=""></p>
+<h3 id="결론-플러터-장점과-단점"><a href="#결론-플러터-장점과-단점" class="headerlink" title="결론, 플러터 장점과 단점"></a>결론, 플러터 장점과 단점</h3><p>장단점을 논하기엔 짧은 기간의 개발이라 조심스럽고 섣부른 판단일수도있습니다만,<br>플러터 자체적으로는 실무에 적용하기에 적당히 고려해볼수도있으나 <code>크로스플랫폼</code>앱을 실무에 적용하는건 무리가 있을것이라 판단됩니다.</p>
+<p>그런데 만약 <code>크로스플랫폼</code>을 도입하기로 결정이 된 상태이며 RN/xamarin/flutter중 하나를 고려해야한다면, flutter는 좋은 선택이 될것이라 생각됩니다.</p>
+<h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ul>
+<li>생산성/디버깅<ul>
+<li>핫 리로딩은 진짜 환상적임..</li>
+</ul>
+</li>
+<li>라이브러리 <ul>
+<li>생각보다 라이브러리가 많고 라이브러리 가져다쓰기가 편함</li>
+<li><a href="https://pub.dev/" target="_blank" rel="noopener">https://pub.dev/</a></li>
+</ul>
+</li>
+<li>디자인 <ul>
+<li>머테리얼 디자인이 최적화 되어있고 코드베이스에서 디자인 가이드 적용을 지원함</li>
+</ul>
+</li>
+</ul>
+<h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h3><ul>
+<li>디자인 <ul>
+<li>주관적인 의견이지만 ios android 모두 하나의 ux로 가는건 최악이라고 생각함</li>
+<li>(사실 이는 모든 크로스플랫폼을 부정하는 것이라..)</li>
+<li>android용 ios용으로 알아서 view가 변경되는 그런 기술이 나온다면 좋을 것 같음</li>
+</ul>
+</li>
+<li>라이브러리 <ul>
+<li>장점이자 단점인데, 라이브러리 적용할때마다 각 플랫폼별로 설정체크를 해주거나 심할경우 네이티브를 작성해야함</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/05/prj/chatbot/" rel="prev" title="prj/chatbot">
+      <i class="fa fa-chevron-left"></i> prj/chatbot
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/05/test/" rel="next" title="test">
+      test <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          흝어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#플러터로-개발하기"><span class="nav-number">1.</span> <span class="nav-text">플러터로 개발하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#머테리얼-디자인-가이드"><span class="nav-number">1.0.1.</span> <span class="nav-text">머테리얼 디자인 가이드</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#다음은-플러터에서-제시하는-앱-테마-코드와-구글-머테리얼-디자인-가이드입니다"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">다음은 플러터에서 제시하는 앱 테마 코드와 구글 머테리얼 디자인 가이드입니다.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI-개발"><span class="nav-number">1.0.2.</span> <span class="nav-text">UI 개발</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#크로스-플랫폼"><span class="nav-number">1.0.3.</span> <span class="nav-text">크로스 플랫폼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#생산성"><span class="nav-number">1.0.4.</span> <span class="nav-text">생산성</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#결론-플러터-장점과-단점"><span class="nav-number">1.0.5.</span> <span class="nav-text">결론, 플러터 장점과 단점</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#장점"><span class="nav-number">1.0.6.</span> <span class="nav-text">장점</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#단점"><span class="nav-number">1.0.7.</span> <span class="nav-text">단점</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hwanhee jo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hwanhee jo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-johwanhee-github-io.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://johwanhee.github.io/2020/05/05/prj/flutter/";
+    this.page.identifier = "2020/05/05/prj/flutter/";
+    this.page.title = "prj/flutter";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-johwanhee-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
