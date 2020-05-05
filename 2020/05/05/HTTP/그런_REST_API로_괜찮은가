@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+<meta name="google-site-verification" content="b0IddweHKWWtPCQjcbE5xKon2MSlWl5tNoDcFP459QU" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -9,6 +10,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -17,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"johwanhee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"johwanhee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="그런 REST API로 괜찮은가?  DEVIEW 2017 2-2 SECTION 그런 REST API로 괜찮은가 영상을 보고나서 작성 하는 글이다. 영상을 본 뒤 전 회사에서 작성했던 REST API를 돌이켜 생각해보니 이런 REST API로는 괜찮지 않았다. 당시에도 REST API 설계에 관심이 많았으나, 내가 작성했던 것들은 무언가 하나씩 잘못되어있었다">
@@ -80,6 +83,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/rss2.xml" title="Good day to code" type="application/rss+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -217,8 +221,8 @@
 
       
         <h1 id="그런-REST-API로-괜찮은가"><a href="#그런-REST-API로-괜찮은가" class="headerlink" title="그런 REST API로 괜찮은가?"></a>그런 REST API로 괜찮은가?</h1><p><img src="./Images/web_page_first_screen.jpg" alt=""></p>
-<p> DEVIEW 2017 2-2 SECTION <a href="https://tv.naver.com/v/2292653" target="_blank" rel="noopener">그런 REST API로 괜찮은가</a> 영상을 보고나서 작성 하는 글이다. 영상을 본 뒤 전 회사에서 작성했던 REST API를 돌이켜 생각해보니 이런 REST API로는 괜찮지 않았다. 당시에도 REST API 설계에 관심이 많았으나, 내가 작성했던 것들은 무언가 하나씩 잘못되어있었다.</p>
-<p> 영상에선 <a href="https://twitter.com/fielding?lang=en" target="_blank" rel="noopener">Roy T. Felding</a>의 직접적인 의견들을 토대로 World wide web 부터 현재의 Rest API까지 이르기까지를 설명하고 있다.</p>
+<p> DEVIEW 2017 2-2 SECTION <span class="exturl" data-url="aHR0cHM6Ly90di5uYXZlci5jb20vdi8yMjkyNjUz">그런 REST API로 괜찮은가<i class="fa fa-external-link-alt"></i></span> 영상을 보고나서 작성 하는 글이다. 영상을 본 뒤 전 회사에서 작성했던 REST API를 돌이켜 생각해보니 이런 REST API로는 괜찮지 않았다. 당시에도 REST API 설계에 관심이 많았으나, 내가 작성했던 것들은 무언가 하나씩 잘못되어있었다.</p>
+<p> 영상에선 <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9maWVsZGluZz9sYW5nPWVu">Roy T. Felding<i class="fa fa-external-link-alt"></i></span>의 직접적인 의견들을 토대로 World wide web 부터 현재의 Rest API까지 이르기까지를 설명하고 있다.</p>
 <h3 id="Web-1991"><a href="#Web-1991" class="headerlink" title="Web (1991)"></a>Web (1991)</h3><p> Q. 어떻게 인터넷에서 정보를 공유할 것인가? </p>
 <p> A. 정보들을 하이퍼텍스트로 연결한다.</p>
 <p> 1) 표현형식 : HTML</p>
@@ -266,12 +270,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/05/HTTP/The_basic_of_web/" rel="prev" title="HTTP/The_basic_of_web">
-      <i class="fa fa-chevron-left"></i> HTTP/The_basic_of_web
+    <a href="/2020/05/05/Flutter/firebase_messaging/" rel="prev" title="Flutter/firebase_messaging">
+      <i class="fa fa-chevron-left"></i> Flutter/firebase_messaging
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/05/Linux/makingFTP/" rel="next" title="Linux/makingFTP">
-      Linux/makingFTP <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/05/HTTP/The_basic_of_web/" rel="next" title="HTTP/The_basic_of_web">
+      HTTP/The_basic_of_web <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -386,7 +390,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hwanhee jo</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9tdXNlLnRoZW1lLW5leHQub3Jn">NexT.Muse</span>
   </div>
 
         

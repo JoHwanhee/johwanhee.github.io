@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+<meta name="google-site-verification" content="b0IddweHKWWtPCQjcbE5xKon2MSlWl5tNoDcFP459QU" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -9,6 +10,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -17,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"johwanhee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"johwanhee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="ML 입문, Tensorflow Object Detection API 호출하는 코드 만들기잘게 조각나 있는 정보들을 한 자리에 정리해보는 포스팅 용어 정리 텐서플로우 : 텐서플로우는 수치 계산과 대규모 머신러닝을 위한 오픈소스 라이브러리다.   머신러닝 : 기계 학습 또는 머신 러닝(영어: machine learning)은 인공 지능의 한 분야로, 컴퓨터가">
@@ -76,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/rss2.xml" title="Good day to code" type="application/rss+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -227,7 +231,7 @@
 <li>인공신경망 : 기계학습과 인지과학에서 생물학의 신경망(동물의 중추신경계중 특히 뇌)에서 영감을 얻은 통계학적 학습 알고리즘이다. 인공신경망은 시냅스의 결합으로 네트워크를 형성한 인공 뉴런(노드)이 학습을 통해 시냅스의 결합 세기를 변화시켜, 문제 해결 능력을 가지는 모델 전반을 가리킨다. 좁은 의미에서는 오차역전파법을 이용한 다층 퍼셉트론을 가리키는 경우도 있지만, 이것은 잘못된 용법으로, 인공신경망은 이에 국한되지 않는다.  </li>
 <li>SSD : Pre-trained 모델, Single Shot MultiBox Detector  </li>
 <li>Jupyter Notebook : 웹 브라우저에서 파이썬 코드를 작성하고 실행까지 해볼 수 있다고 함  </li>
-<li>아나콘다 : 파이썬 배포판 중 하나. 데이터 분석에 용이함. <a href="https://wikidocs.net/2825" target="_blank" rel="noopener">https://wikidocs.net/2825</a> 여기서 32bit를 받으라고하는데, 왜??? 32비트용 애드온이 더 많은가?  </li>
+<li>아나콘다 : 파이썬 배포판 중 하나. 데이터 분석에 용이함. <span class="exturl" data-url="aHR0cHM6Ly93aWtpZG9jcy5uZXQvMjgyNQ==">https://wikidocs.net/2825<i class="fa fa-external-link-alt"></i></span> 여기서 32bit를 받으라고하는데, 왜??? 32비트용 애드온이 더 많은가?  </li>
 <li>COCO API : COCO is a large image dataset designed for object detection, segmentation, person keypoints detection, stuff segmentation, and caption generation  </li>
 </ol>
 <h2 id="Tensorflow란"><a href="#Tensorflow란" class="headerlink" title="Tensorflow란?"></a>Tensorflow란?</h2><p>머신러닝은 복잡한 분야다. 그러나 구글 텐서플로우(TensorFlow)와 같은 머신러닝 프레임워크 덕분에 머신러닝 모델을 구현하는 과정은 예전만큼 복잡하거나 어렵지는 않다. 머신러닝 프레임워크는 데이터 획득, 모델 학습, 예측, 미래 결과 정제와 같은 과정을 쉽게 해준다.</p>
@@ -243,7 +247,7 @@
 </li>
 <li><p>CNTK: 마이크로소프트 코그니티브 툴킷(Cognitive Toolkit)은 텐서플로우와 마찬가지로 그래프 구조를 사용해 데이터 흐름을 기술하지만 딥 러닝 신경망을 만드는 데 초점을 둔다. CNTK는 여러 가지 신경망 작업을 더 빠르게 처리하며 폭넓은 API를 보유하고 있다(파이썬, C++, C#, 자바). 그러나 현재 CNTK는 텐서플로우만큼 배우고 배포하기가 쉽지는 않다.</p>
 </li>
-<li><p>아파치(Apache) MXNet: 아마존이 AWS의 고급 딥 러닝 프레임워크로 채택했으며 복수의 GPU와 머신에 걸쳐 거의 선형적으로 확장이 가능하다. 또한 파이썬, C++, 스칼라, R, 자바스크립트, 줄리아, 펄, 고 등 폭넓은 언어 API를 지원한다. 다만 네이티브 API의 사용편의성은 텐서플로우에 비해 떨어진다. <a href="mailto:editor@itworld.co.kr">editor@itworld.co.kr</a>  </p>
+<li><p>아파치(Apache) MXNet: 아마존이 AWS의 고급 딥 러닝 프레임워크로 채택했으며 복수의 GPU와 머신에 걸쳐 거의 선형적으로 확장이 가능하다. 또한 파이썬, C++, 스칼라, R, 자바스크립트, 줄리아, 펄, 고 등 폭넓은 언어 API를 지원한다. 다만 네이티브 API의 사용편의성은 텐서플로우에 비해 떨어진다. <span class="exturl" data-url="bWFpbHRvOmVkaXRvckBpdHdvcmxkLmNvLmty">editor@itworld.co.kr<i class="fa fa-external-link-alt"></i></span>  </p>
 </li>
 </ul>
 
@@ -381,7 +385,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">hwanhee jo</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9tdXNlLnRoZW1lLW5leHQub3Jn">NexT.Muse</span>
   </div>
 
         
