@@ -156,6 +156,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/HTTP/%E1%84%80%E1%85%B3%E1%84%85%E1%85%A5%E1%86%AB%20REST%20API%E1%84%85%E1%85%A9%20%E1%84%80%E1%85%AB%E1%86%AB%E1%84%8E%E1%85%A1%E1%86%AD%E1%84%8B%E1%85%B3%E1%86%AB%E1%84%80%E1%85%A1?/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/HTTP/%E1%84%80%E1%85%B3%E1%84%85%E1%85%A5%E1%86%AB%20REST%20API%E1%84%85%E1%85%A9%20%E1%84%80%E1%85%AB%E1%86%AB%E1%84%8E%E1%85%A1%E1%86%AD%E1%84%8B%E1%85%B3%E1%86%AB%E1%84%80%E1%85%A1?/" class="post-title-link" itemprop="url">HTTP/그런 REST API로 괜찮은가?</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/HTTP/%E1%84%80%E1%85%B3%E1%84%85%E1%85%A5%E1%86%AB%20REST%20API%E1%84%85%E1%85%A9%20%E1%84%80%E1%85%AB%E1%86%AB%E1%84%8E%E1%85%A1%E1%86%AD%E1%84%8B%E1%85%B3%E1%86%AB%E1%84%80%E1%85%A1?/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/HTTP/그런 REST API로 괜찮은가?/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="그런-REST-API로-괜찮은가"><a href="#그런-REST-API로-괜찮은가" class="headerlink" title="그런 REST API로 괜찮은가?"></a>그런 REST API로 괜찮은가?</h1><p><img src="./Images/web_page_first_screen.jpg" alt=""></p>
+<p> DEVIEW 2017 2-2 SECTION <a href="https://tv.naver.com/v/2292653" target="_blank" rel="noopener">그런 REST API로 괜찮은가</a> 영상을 보고나서 작성 하는 글이다. 영상을 본 뒤 전 회사에서 작성했던 REST API를 돌이켜 생각해보니 이런 REST API로는 괜찮지 않았다. 당시에도 REST API 설계에 관심이 많았으나, 내가 작성했던 것들은 무언가 하나씩 잘못되어있었다.</p>
+<p> 영상에선 <a href="https://twitter.com/fielding?lang=en" target="_blank" rel="noopener">Roy T. Felding</a>의 직접적인 의견들을 토대로 World wide web 부터 현재의 Rest API까지 이르기까지를 설명하고 있다.</p>
+<h3 id="Web-1991"><a href="#Web-1991" class="headerlink" title="Web (1991)"></a>Web (1991)</h3><p> Q. 어떻게 인터넷에서 정보를 공유할 것인가? </p>
+<p> A. 정보들을 하이퍼텍스트로 연결한다.</p>
+<p> 1) 표현형식 : HTML</p>
+<p> 2) 식별자 : URI</p>
+<p> 3) 전송방법 : HTTP</p>
+<p><strong>Roy T. Fielding Says</strong></p>
+<ul>
+<li><em>“How do I improve HTTP without breaking the Web?”</em></li>
+<li><em>“Rest APIs must be hypertext-driven”</em></li>
+<li><em>“REST API를 위한 최고의 버저닝 전략은 버저닝을 안 하는 것”</em></li>
+</ul>
+<h3 id="REST-API"><a href="#REST-API" class="headerlink" title="REST API"></a>REST API</h3><p>REST API는 분산 하이퍼미디어 시스템을 위한 아키텍쳐 스타일이다. 아키텍쳐 스타일은 제약조건의 집합인데, 이 말은 즉 제약조건을 모두 지켜야 REST API라고 말을 할 수 있다는 것이다.</p>
+<p><strong>다음은 REST API의 제약조건들 이다.</strong></p>
+<ul>
+<li>client-server</li>
+<li>stateless</li>
+<li>cache</li>
+<li><strong>uniform interface</strong></li>
+<li>layered system</li>
+<li>code-on-demand (optional)<br>서버에서 코드를 client로 보내어 바로 실행할 수 있어야한다</li>
+</ul>
+<p><strong>uniform interface 을 잘 만족 시켜야 REST 하다. 라고할 수있다.</strong></p>
+<ul>
+<li><p>identification of resource<br>리소스가 URI가 식별되어야한다.</p>
+</li>
+<li><p>manipulation of resources through representations<br>리소스를 만들거나 삭제하거나할 때 HTTP 메세지에 표현을 담아야 한다. </p>
+</li>
+<li><p>self-descriptive messages<br>메세지는 스스로에 설명할 수 있어야 한다. 다음은 강연자가 설명하는 self-descriptive messages의 예시이다. Response Message에서 HTTP의 상태 설명과 body의 media type을 충분히 설명하고 있어 self-descriptive 하다고 하는 것이다.<br><img src="./Images/Self-descriptive%20message.jpg" alt=""></p>
+</li>
+<li><p>hypermedia as the engine of application sate<br>어플리케이션의 상태는 hyperlink를 통해서 항상 전이가 되어야한다.<br><img src="./Images/HATEOAS.jpg" alt=""></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
     <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Flutter/firebase_messaging/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -999,84 +1105,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Algorithm/insertSort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/Algorithm/insertSort/" class="post-title-link" itemprop="url">Algorithm/insertSort</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-05-06 00:05:54" itemprop="dateModified" datetime="2020-05-06T00:05:54+09:00">2020-05-06</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/Algorithm/insertSort/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Algorithm/insertSort/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = left + <span class="number">1</span>; i &lt; right; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i<span class="number">-1</span>] &lt;= arr[i])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        </span><br><span class="line">        value = arr[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &gt; arr[i])</span><br><span class="line">            &#123;</span><br><span class="line">                memmove(&amp;arr[j + <span class="number">1</span>], &amp;arr[j], <span class="keyword">sizeof</span> (arr[<span class="number">0</span>]) * (i - j));</span><br><span class="line">                arr[j] = value;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123; <span class="number">5</span>, <span class="number">7</span>, <span class="number">89</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">size</span> = <span class="keyword">sizeof</span> arr / <span class="keyword">sizeof</span> arr[<span class="number">0</span>];</span><br><span class="line">    insertSort(arr, <span class="number">0</span>, <span class="built_in">size</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, arr[i]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1146,7 +1174,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
