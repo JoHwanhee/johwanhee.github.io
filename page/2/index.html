@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-<meta name="google-site-verification" content="y8XZ68Y9gDk4Kekmx1qhQFlctFCF2YPFgjmJjOgo4_E" />
+<meta name="google-site-verification" content="b0IddweHKWWtPCQjcbE5xKon2MSlWl5tNoDcFP459QU" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -1035,7 +1035,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Algorithm/climb/">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Algorithm/hash/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1049,7 +1049,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/05/Algorithm/climb/" class="post-title-link" itemprop="url">Algorithm/climb</a>
+            <a href="/2020/05/05/Algorithm/hash/" class="post-title-link" itemprop="url">Algorithm/hash</a>
         </h2>
 
         <div class="post-meta">
@@ -1061,13 +1061,6 @@
 
               <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-05-06 00:07:16" itemprop="dateModified" datetime="2020-05-06T00:07:16+09:00">2020-05-06</time>
-              </span>
 
           
   
@@ -1078,8 +1071,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/05/05/Algorithm/climb/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Algorithm/climb/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/05/05/Algorithm/hash/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Algorithm/hash/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1094,7 +1087,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">climb</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( n == <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">return</span> climb(n - <span class="number">1</span>) + climb(n - <span class="number">2</span>) + climb(n - <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, climb(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+          <h1 id="hash-table"><a href="#hash-table" class="headerlink" title="hash table"></a>hash table</h1><p>해시 테이블의 기본 개념</p>
+<p>컴퓨터에서 표현되는 모든 데이터들은 결국 숫자이다.<br>예를들어 우리가 알파벳 ‘a’를 화면에 표현하고자하면 컴퓨터는 내부적으로 49라는 숫자를 가지고 있고, 이 숫자가 화면에 표시할땐 ‘a’ 라고 표시하자! 라는 규칙이 있는 것이다. 해쉬 테이블은 이 개념을 가장 잘 이용한 자료구조이다. </p>
+<p>해시테이블은 데이터들을 각 저장소</p>
+<p>h = s[0]<em>31^(n-1) + s[1]</em>31^(n-2) …………..+s[n-1]; </p>
+<p>Additive and Multiple Hashing 이다. (출처 Knuth, <Art of Programming>) </p>
+<ol start="2">
+<li>a는 처음에는 크게 상관없다고 생각했으나, 기존 코드 및 인터넷 검색을 해보니 대체로, 소수 (특히 31)을 사용하고 있었다. 31을 사용하는 이유는 32 - 1, 즉 val을 bit-shift 5칸 한 것에서 val을 한번 빼주면 되어서, 컴터가 더 빠른 연산을 하나 보다.</li>
+</ol>
+
       
     </div>
 
