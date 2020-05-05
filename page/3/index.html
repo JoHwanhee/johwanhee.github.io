@@ -156,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Rapunzel/1034_1237/">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Algorithm/quickSort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -170,7 +170,85 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/05/English/Rapunzel/1034_1237/" class="post-title-link" itemprop="url">English/Rapunzel/1034_1237</a>
+            <a href="/2020/05/05/Algorithm/quickSort/" class="post-title-link" itemprop="url">Algorithm/quickSort</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-05-06 00:06:52" itemprop="dateModified" datetime="2020-05-06T00:06:52+09:00">2020-05-06</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/Algorithm/quickSort/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Algorithm/quickSort/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = left, j = right;</span><br><span class="line">    <span class="keyword">int</span> pivot = arr[(left + right) / <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (arr[i] &lt; pivot) i++;</span><br><span class="line">        <span class="keyword">while</span> (arr[j] &gt; pivot) j--;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (i &lt;= j)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = temp;</span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (i &lt;= j);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (left &lt; j)</span><br><span class="line">        quickSort(arr, left, j);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (i &lt; right)</span><br><span class="line">        quickSort(arr, i, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123; <span class="number">5</span>, <span class="number">7</span>, <span class="number">89</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">size</span> = <span class="keyword">sizeof</span> arr / <span class="keyword">sizeof</span> arr[<span class="number">0</span>];</span><br><span class="line">    quickSort(arr, <span class="number">0</span>, <span class="built_in">size</span> - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, arr[i]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Algorithm/hash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/Algorithm/hash/" class="post-title-link" itemprop="url">Algorithm/hash</a>
         </h2>
 
         <div class="post-meta">
@@ -192,8 +270,247 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/05/05/English/Rapunzel/1034_1237/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Rapunzel/1034_1237/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/05/05/Algorithm/hash/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Algorithm/hash/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="hash-table"><a href="#hash-table" class="headerlink" title="hash table"></a>hash table</h1><p>해시 테이블의 기본 개념</p>
+<p>컴퓨터에서 표현되는 모든 데이터들은 결국 숫자이다.<br>예를들어 우리가 알파벳 ‘a’를 화면에 표현하고자하면 컴퓨터는 내부적으로 49라는 숫자를 가지고 있고, 이 숫자가 화면에 표시할땐 ‘a’ 라고 표시하자! 라는 규칙이 있는 것이다. 해쉬 테이블은 이 개념을 가장 잘 이용한 자료구조이다. </p>
+<p>해시테이블은 데이터들을 각 저장소</p>
+<p>h = s[0]<em>31^(n-1) + s[1]</em>31^(n-2) …………..+s[n-1]; </p>
+<p>Additive and Multiple Hashing 이다. (출처 Knuth, <Art of Programming>) </p>
+<ol start="2">
+<li>a는 처음에는 크게 상관없다고 생각했으나, 기존 코드 및 인터넷 검색을 해보니 대체로, 소수 (특히 31)을 사용하고 있었다. 31을 사용하는 이유는 32 - 1, 즉 val을 bit-shift 5칸 한 것에서 val을 한번 빼주면 되어서, 컴터가 더 빠른 연산을 하나 보다.</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/C/object_type_variables/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/C/object_type_variables/" class="post-title-link" itemprop="url">C/object_type_variables</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/C/object_type_variables/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/C/object_type_variables/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="오브젝트-타입-변수에-대하여"><a href="#오브젝트-타입-변수에-대하여" class="headerlink" title="오브젝트, 타입, 변수에 대하여"></a>오브젝트, 타입, 변수에 대하여</h1><ol>
+<li><p>Object<br>실행시에 표현할 수 있는 값들을 저장하는 곳을 Object라고 합니다.<br>예를들어, printf(“%d” ,10) 이라고 할 경우에 10이라는 숫자는 한 어느 저장소에 들어있고 이 저장소를 Object라고 합니다.  </p>
+</li>
+<li><p>타입<br>타입은 큰 의미로 Object 타입과  function 타입으로 나뉘어집니다. 또 다시 Object 타입은 complete 타입과 imcomplete 타입으로 나뉘어지며<br>complete 타입은 <code>크기를 결정할 정보가 완전한 경우</code> 입니다.  ( basic types and pointer type )<br>imcomptete 타입은 <code>크기를 결정할 정보가 불완전한 경우</code> 입니다.  ( void, array of unkown size, structure, union, enum )  </p>
+</li>
+<li><p>변수<br>변수 = Object + 식별자  </p>
+</li>
+</ol>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><a href="http://www.msg.ucsf.edu/local/programs/IBM_Compilers/C:C++/html/language/ref/clrc03incotyp.htm" target="_blank" rel="noopener">http://www.msg.ucsf.edu/local/programs/IBM_Compilers/C:C++/html/language/ref/clrc03incotyp.htm</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/C/pointer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/C/pointer/" class="post-title-link" itemprop="url">C/pointer</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/C/pointer/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/C/pointer/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="여러-포인터-종류들"><a href="#여러-포인터-종류들" class="headerlink" title="여러 포인터 종류들"></a>여러 포인터 종류들</h1><h3 id="포인터-배열"><a href="#포인터-배열" class="headerlink" title="포인터 배열"></a>포인터 배열</h3><p>원소가 포인터인 배열, 주로 여러줄의 문자열을 나타낼때 쓴다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *arps[] = &#123; <span class="string">"고양이"</span>,<span class="string">"개"</span>,<span class="string">"오랑우탄"</span>,<span class="string">"돼지"</span>,<span class="string">"지렁이"</span> &#125;;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) </span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, arps[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="배열-포인터"><a href="#배열-포인터" class="headerlink" title="배열 포인터"></a>배열 포인터</h3><p>단순히 배열의 번지수를 담는 포인터, 주로 2중 배열 인자로 받기 위해 쓴다..</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[<span class="number">5</span>][<span class="number">4</span>] =</span><br><span class="line">&#123;</span><br><span class="line">	&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,</span><br><span class="line">	&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;,</span><br><span class="line">	&#123;<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> (*ptr)[<span class="number">4</span>] = (<span class="keyword">int</span> (*)[<span class="number">4</span>])<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * <span class="number">5</span> * <span class="number">4</span>);</span><br><span class="line">ptr[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ptr[<span class="number">1</span>][<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2중포인터"><a href="#2중포인터" class="headerlink" title="2중포인터"></a>2중포인터</h3><p>포인터의 포인터!</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> **ppArr = (<span class="keyword">int</span> **)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span> *) * <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">	ppArr[i] = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * <span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line">ppArr[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ppArr[<span class="number">1</span>][<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/CS/Windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/CS/Windows/" class="post-title-link" itemprop="url">CS/Windows</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/CS/Windows/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/CS/Windows/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -209,725 +526,152 @@
 
       
           <pre>
-Then i don't know why tick so long.
-Then I don't know why does it takes so long. 
-
-Oh hohoho, 
-
-dalling i am just teasing
-Oh, darling. I'm just teasing.
-
-all right, so, mother as you know tommorow is a very big day.
-All right. so, mother. As you know tomorrow is a very big day.
-
-rapunzel look at mirror. you know what i see, i see the strong and confident very beautiful young lady.
-Rapunzel look in that mirror. You know what I see? I see a strong, confident, beautiful young lady. 
-
-oh look you here too.
-Oh look, you're here too.
-
-hahahahah,
-
-i am just teasing. 
-I'm just teasing. 
-
-stop taking every things so seriously.
-Stop taking everything so seriously.
-
-okay, so, mother, as i've saying tommorow is a..
-Okay, so mother. As I was saying tomorrow...
-
-Rapunzel, mother is feeling lundown?
-Flower, mother's feeling a little run down. 
-
-Would you sing for me dear? then we'll talk 
-Would you sing for me, dear? Then we'll talk.
-
-oh, ofcourse mother.
-OH! Of course, mother.
-
-sing~~~
-
-Rapunzel!
-Rapunzel!
-
-So, mother earlyer i've saying tommorow is a pretty big day and eighteen ?? birth day. 
-So, mother. Earlier I saying that tomorrow was a pretty big day, and you didn't really respond, 
-
-i am just gonna tell you, it's my birth day.
-So I'm just going to tell you. It's my birthday!
-
-ta da!!
-
-no no no, can't be.
-No, no, no, can't be. 
-
-i'd this think remember.
-I distinctly remember.
-
-your birth day was last year.
-Your birthday was last year.
-
-that's the funny things about birth day.
-That's the funny thing about birthdays
-
-so kind of your think, 
-They're kind of an annual thing.
-
-mother, i am turning eighteen and i wanna to ask 
-Mother, I'm turning eighteen. And I wanted to ask, 
-
-but i really want for birth day actually i ~~
-what I really want for this birthday. 
-
-okay rapunzel please stop with the mumbling you know how i feel about the mumb bla ~~
-Rapunzel please, stop with the mumbling. You know how I feel about the mumbling. Blah ~
-
-is very annoying, i am just teasing you look doorable, i love so much dalling.
-It's very annoying. I'm just teasing, you're adorable I love you so much, darling.
-
-i wanna see the floating lights.
-I want to see the floating lights.
-
-
-what
-
-i was hoping you with taken either see the floating lights.
-Well I was hoping you would take me to see the thing.
-
-oh you mean the stars.
-Oh, you mean the stars.
-
-thats the thing
-
-i charted stars and all allways contents. but these they apear every year on my birth day mother.
-I've charted stars and they're always constant. But these, they appear every year on my birthday, Mother
-
-only on my birth day.
-Only on my birthday.
-</pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Rapunzel/1237_1251/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/English/Rapunzel/1237_1251/" class="post-title-link" itemprop="url">English/Rapunzel/1237_1251</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/English/Rapunzel/1237_1251/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Rapunzel/1237_1251/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>오늘은 넘넘넘 피곤해서 조금만..</p>
-<pre>
-and I can't help but feel like there, there are meant for me.
-and I can't help but feel like there, there are meant for me.
-
-I need to see them mother, enough just from my window. in person
-I need to see them mother, and not just from my window. in person
-
-i have to know what they are.
-i have to know what they are.
-
-you want go outside?
-you want go outside?
-</pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Rapunzel/1251_1405/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/English/Rapunzel/1251_1405/" class="post-title-link" itemprop="url">English/Rapunzel/1251_1405</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/English/Rapunzel/1251_1405/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Rapunzel/1251_1405/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <pre>
-Oh, why Rpunzel.
-Oh, why Rapunzel.
-
-Look at to us plaza la so flower?
-Look at you, as fragile as a flower
-
-Still at stepbling just sprout.
-Still a little sapling, just a sprout.
-
-You know why we stay up in this tower
-You know why we stay up in this tower?
-
-i kno..
-I know, but...
-
-thats right, to keep you safe and sound down
-That's right, to keep you safe, and sound, down
-
-guess i always knew day was comming.
-Guess I always knew this day was coming
-
-knew that soon you want leave last
-Knew that soon you'd want to leave the nest.
-
-soon but not yet.
-Soon, but not yet
-
-but
-
-trust me pet. mother knows best.
-Trust me pet Mother Knows best
-
-knows best listen to your mother. its a scarry world out there.
-Mother knows best, listen to your mother. It's a scary world out there.
-
-mother knows best. one way another something will go worng i swear.
-Mother knows best. One way or another, something will go wrong, I swear
-
-Ruffians, Stugs, Poison ivy quik sound candable smate(?) the plain, no! yes! 
-Ruffians, thugs, poison Ivy, quicksand Cannibals, and snakes, the plague, yes
-
-but also large bugs. man apoint teeth.
-Also large bugs, men with pointy teeth
-
-and stop no my own just said me.
-And stop, no more, you'll just upset me.
-
-mother's right here. mother will protect you 
-Mother's right here, mother will protect you
-
-dalling here's what i sugest.
-Darling here's what I suggest
-
-skip the drama stay with mama.
-Skip the drama, stay with Mama
-
-mother~~ knows best.
-Mother, knows best
-
-mother knows best.
-Mother, knows best
-
-take a from your mumsy.
-Take it from your mumsy.
-
-own your law?? you're survive.
-On your own, you won't survive.
-</pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8/" class="post-title-link" itemprop="url">English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes - 복사본</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes - 복사본/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>article : <a href="https://hackernoon.com/how-to-lose-an-it-job-in-10-minutes-3d63213c8370" target="_blank" rel="noopener">https://hackernoon.com/how-to-lose-an-it-job-in-10-minutes-3d63213c8370</a></p>
-<pre>
-How to Lose an IT Job in 10 Minutes.
-10분안에 IT 직업을 잃는 방법.
-
-Recently I’ve been quite close to getting a job at one of the Big 5. I went through the screening process and the take-home assignment smoothly but I failed to pass one of the final stages, a set of one to one, or two to one, interviews:
-최근 나는 큰 5개 job 중 하나에 취직할 뻔 했다. 나는 스무스하게 take-home 면접에 통과했지만, 마지막 1:1 or 2:1 면접에서 통과하지 못했다.
-
-Whiteboard coding interview: algorithms.
-화이트보드 코딩 인터뷰 : 알고리즘들
-
-Technical interview: JavaScript, CS, React.
-기술 인터뷰 : JavaScript, CS, React.
-
-Culture fit: that.
-컬쳐 핏
-
-Second whiteboard interview: this maybe in another article :P
-두번째 화이트 보드 인터뷰 : 이건 아마 다른 article에서.. :P
-
-It went wrong, There are a few mistakes that contributed to this temporary debacle.
-잘못됐다. 여기 몇가지 실패의 원인이 된 실수가 있다.
-
-I may have passed the techical test and the culture fit (let’s just assume that) but I admittedly performed badly at the whiteboard coding interviews.
-나는 기술면접과 컬쳐핏에 통과했는데, 인정하건대, 내 코딩 화이트보드 코딩 인터뷰는 좋은 성과를 내지 못했다.... ㅠㅠ 
-
-
-Thinking in retrospective about that day I couldn’t expect any different outcome.
-그 날을 다시 생각해보면, 나는 다른 결과를 예상하지 못했다.
-
-The truth is: I’m not prepared to do whiteboard interviews.
-팩트는, 난 화이트보드 인터뷰를 준비하지 않았다.
-
-Whiteboard interviews
-화이트보드 인터뷰
-The whiteboard interview is, in some ways, a hybrid of a technical test of the depth of your knowledge and also a social exercise (source)
-화이트보드 인터뷰는, 기술을 얼마나 깊게 알고있는지 그리고 경험을 융합한 면접 방법들 중 하나이다.
-
-We all know what it is, right? it’s not much about the code, it’s about your solving abilities, it doesn’t matter if etc etc…
-우리는 이게 뭔지 모두 안다. 맞죠?, 코드에 관한것이 아니고  이건 당신의 문제해결 능력들에 관것이며.. 기타 등등등..
-
-I’m a frontend developer, I generally don’t implement interview-like algorithms on the fly or articulate my thought process while I code, I sort of make interactive UIs most the time with algorithms. When I need to implement one that I didn’t use for a while, I just start researching.
-난 프론트엔드 개발자다, 나는 일반적으로 인터뷰에 나오는 알고리즘들을 직접 구현하거나 공부를 많이 하지 않고, 일종의 뭐 interactive한 UI들에 관한 algorithm에 시간을 많이 쓴다. 내가 뭐 하나를 구현할때, 나는 그냥 researching 해야한다.
-
-How much do these tests tell about a candidate anyway?
-그래서, 이 테스트들이 지원자들한테 얼마나 많이 말해주는가?
-</pre>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes/" class="post-title-link" itemprop="url">English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Reading/How_to_Lose_an_IT_Job_in_10_Minutes/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>article : <a href="https://hackernoon.com/how-to-lose-an-it-job-in-10-minutes-3d63213c8370" target="_blank" rel="noopener">https://hackernoon.com/how-to-lose-an-it-job-in-10-minutes-3d63213c8370</a></p>
-<pre>
-How to Lose an IT Job in 10 Minutes.
-10분안에 IT 직업을 잃는 방법.
-
-Recently I’ve been quite close to getting a job at one of the Big 5. I went through the screening process and the take-home assignment smoothly but I failed to pass one of the final stages, a set of one to one, or two to one, interviews:
-최근 나는 큰 5개 job 중 하나에 취직할 뻔 했다. 나는 스무스하게 take-home 면접에 통과했지만, 마지막 1:1 or 2:1 면접에서 통과하지 못했다.
-
-Whiteboard coding interview: algorithms.
-화이트보드 코딩 인터뷰 : 알고리즘들
-
-Technical interview: JavaScript, CS, React.
-기술 인터뷰 : JavaScript, CS, React.
-
-Culture fit: that.
-컬쳐 핏
-
-Second whiteboard interview: this maybe in another article :P
-두번째 화이트 보드 인터뷰 : 이건 아마 다른 article에서.. :P
-
-It went wrong, There are a few mistakes that contributed to this temporary debacle.
-잘못됐다. 여기 몇가지 실패의 원인이 된 실수가 있다.
-
-I may have passed the techical test and the culture fit (let’s just assume that) but I admittedly performed badly at the whiteboard coding interviews.
-나는 기술면접과 컬쳐핏에 통과했는데, 인정하건대, 내 코딩 화이트보드 코딩 인터뷰는 좋은 성과를 내지 못했다.... ㅠㅠ 
-
-
-Thinking in retrospective about that day I couldn’t expect any different outcome.
-그 날을 다시 생각해보면, 나는 다른 결과를 예상하지 못했다.
-
-The truth is: I’m not prepared to do whiteboard interviews.
-팩트는, 난 화이트보드 인터뷰를 준비하지 않았다.
-
-Whiteboard interviews
-화이트보드 인터뷰
-The whiteboard interview is, in some ways, a hybrid of a technical test of the depth of your knowledge and also a social exercise (source)
-화이트보드 인터뷰는, 기술을 얼마나 깊게 알고있는지 그리고 경험을 융합한 면접 방법들 중 하나이다.
-
-We all know what it is, right? it’s not much about the code, it’s about your solving abilities, it doesn’t matter if etc etc…
-우리는 이게 뭔지 모두 안다. 맞죠?, 코드에 관한것이 아니고  이건 당신의 문제해결 능력들에 관것이며.. 기타 등등등..
-
-I’m a frontend developer, I generally don’t implement interview-like algorithms on the fly or articulate my thought process while I code, I sort of make interactive UIs most the time with algorithms. When I need to implement one that I didn’t use for a while, I just start researching.
-난 프론트엔드 개발자다, 나는 일반적으로 인터뷰에 나오는 알고리즘들을 직접 구현하거나 공부를 많이 하지 않고, 일종의 뭐 interactive한 UI들에 관한 algorithm에 시간을 많이 쓴다. 내가 뭐 하나를 구현할때, 나는 그냥 researching 해야한다.
-
-How much do these tests tell about a candidate anyway?
-그래서, 이 테스트들이 지원자들한테 얼마나 많이 말해주는가?
-</pre>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Word/2018.12.19/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/English/Word/2018.12.19/" class="post-title-link" itemprop="url">English/Word/2018.12.19</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/English/Word/2018.12.19/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Word/2018.12.19/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1-a-set-of"><a href="#1-a-set-of" class="headerlink" title="1. a set of"></a>1. a set of</h4><p>일습의</p>
-<p>예문 : I heard a set of pipes</p>
-<h4 id="2-contribute"><a href="#2-contribute" class="headerlink" title="2. contribute"></a>2. contribute</h4><p>기부하다, 원인이되다, 기여하다 이바지하다, 기고하다</p>
-<p>예문 : We contributed ￡5,000 to the earthquake fund.</p>
-<h4 id="3-debacle"><a href="#3-debacle" class="headerlink" title="3. debacle"></a>3. debacle</h4><p>대 실패, 빙하의 붕괴, 와홰, 괴멸, 낭패</p>
-<h4 id="4-admittedly"><a href="#4-admittedly" class="headerlink" title="4. admittedly"></a>4. admittedly</h4><p>인정하건대</p>
-<h4 id="5-badly-lt-gt-well"><a href="#5-badly-lt-gt-well" class="headerlink" title="5. badly &lt;-&gt; well"></a>5. badly &lt;-&gt; well</h4><p>조심성 없이 잘 되지 않은…</p>
-<h4 id="6-retrospective"><a href="#6-retrospective" class="headerlink" title="6. retrospective"></a>6. retrospective</h4><p>회고하는, 소급적용되는, 회고전</p>
-<p>예문 : A retrospective exhibition of Van Gogh starts tomorrow.</p>
-<h4 id="7-outcome"><a href="#7-outcome" class="headerlink" title="7. outcome"></a>7. outcome</h4><p>결과</p>
-<h4 id="8-implement"><a href="#8-implement" class="headerlink" title="8. implement"></a>8. implement</h4><p>시행하다.</p>
-<h4 id="9-on-the-fly"><a href="#9-on-the-fly" class="headerlink" title="9. on the fly"></a>9. on the fly</h4><p>그때 그때 봐가며</p>
-<p>Catch you on the fly , homey </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Word/2018.12.20/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/English/Word/2018.12.20/" class="post-title-link" itemprop="url">English/Word/2018.12.20</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/English/Word/2018.12.20/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Word/2018.12.20/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <pre>
-
-1. stragight (��ݽ� ǥ��)
-�̼�����
-
-2. weirdness 
-�̻��� ��, �⹦��
-I just love this weirdness called life.
-But what makes the book really funny is that sometimes you can actually relate to its weirdness.
+컴퓨터는
+CPU + RAM + 버스
+
+CPU에는 ALU, CU, REGISTERS가 있음
+ALU는 계산장치고
+CU는 CPU의 동작을 관할함
+레지스터는 CPU가 연산할때 뭐 주소를 저장하거나 데이터를 저장하거나 등등 임시 저장함
+
+자 그럼 a.exe라는 프로그램을 실행시킨다고하면
+OS가 IO버스로 하드디스크에 있는 a.exe를 RAM에 COPY시킴
+그러면 CPU는 RAM에 있는 프로세스의 명령어들을 하나씩 FETCH함
+FETCH한 정보는 CPU에 버스 인터페이스를 통해 레지스터에 DECODE함
+레지스터에 저장된 정보를 ALU가 EXCUTION함
+이 구조를 STORED PROGRAM CONCEPT라고 함 (폰노이만 구조라고도 함)
+
+그리고 이런 하나의 동작 동작들을 클럭이라고 하고
+이는 클럭발생기에 의해 클럭이 생성됨
+클럭발생기는 각 장치별로 있고
+장치별 최소 클럭이 컴퓨터 전체적인 성능이 됨
+
+자 이제부터는 각 명령어들을 직접 설계해볼거임
+
+명령어를 설계하려면 우선
+레지스터정의가 필요함
+r0
+r1
+r2
+r3 을 범용
+r4
+r5
+r6
+r7 을 각 addr ir 등으로 쓰는데 아직 안 배움
+
+그리고 명령어 함수를 정의함
+ADD 001
+LOAD 010
+MIN 011 등등과 같이 함
+
+그래서 명령어조합을 함
+ex) ADD r1 r2 r3 -> r2 r2에 있는 정보를 더해서 r1에 저장하라
+이렇게 하려면 r2 r3에 정보를 저장해야하니까
+LOAD가 필요함
+LOAD는 RAM으로부터 데이터를 REG에 불러오는것
+반대로 
+STORE는 REG -> RAM임
+
+
+64비트 버스라면, 명령어가 64비트라는 말인데
+그 말은 명령어 조합이 64비트 이내란 말이고
+그 말은 각 조합이 64비트를 넘어선 안 된다는 말이 된다.
+
+그렇다면 조합중 하나인 피연산자 or 주소 등이 64비트로 표현하는 경우면 어떻게 해야하나?
+
+클럭생성은 누가 하는가?
+
+LOAD명령어와 STORE의 필요성
+-> 명령어가 제한되어있ㅇ니까
+
+LOAD나 STORE 명령어는 주소값을 갖고 하는데,,,,
+명령어는 64비트잖아?
+근데 주소값도 64비트야
+그럼 어떻게 해?
+
+LOAD r1 0x10
+LOAD r2 0x20
+ADD r3 r1 r2
+STORE r3 0x30
+
+direct mode indirect mode
+
+int a = 10; // 0x0010
+int b = 20; //0x0100 
+int c = 0; // 0x0020
+c = a + b;
+
+LOAD r1 0x0010
+
+MUL r0 4 4
+MUL r2 4 4
+MUL r3 r0 r2 
+
+STORE r3 0x0030
+LOAD r2 0x0030
+
+ADD r3 r1 r2
+
+RAM보다 프로세스 크기가 커지면?
+ - 우선은 가상 메모리 덕분에 된다고 생각하자.
+
+프로세스가 뭐지??
+ - 메모리구조 + 레지스터 Set
+ - 프로세스별로 독립적으로 할당받는 모든 메모리들
+
+프로세스 스케쥴러
+ - CPU는 한 순간에 하나의 프로세스만 실행 가능하다.
+ - 그런데 여러 프로세스를 사용하려면?
+ - 프로세스들을 교체해줘야한다.
+ - 근데 스케쥴러 자체도 프로세스다.
+ - 그래서 스케쥴러가 동작되는 시간에도 CPU는 다른일을 못한다.
+ - 따라서 가급적 스케쥴러 호출을 적게할 수록 좋다.
+
+이 상태전이는 스케쥴러가 선택한다.
+ Running state : CPU에 올라와 있는 상태 - 
+ Ready state : Running 하고싶은 상태 - 
+ Blocked state
+
+I/O연산은 CPU가 하는게 아님!!
+I/O를 하고 있으면 Blocked로 넘김
+
+컨텍스트 스위칭
+ - 프로세스가 running state로 넘어갈 때 프로세스 종속된 데이터들과 MainMemory에 있는 데이터를 교환하는ㄷ..
+
+커널 오브젝트
+ - 커널에 의해 관리되는 리소스 정보를 담고 있는 데이터 블록 ( 파이프, 프로세스, 쓰레드, 파일 등)
+ - 프로세스를 관리하려면, 프로세스 관련된 프로세스 커널 오브젝트가 생성됨
+ - 파일을 생성하면 그 파일에 해당하는 파일 커널 오브젝트가 생성됨
+ - 쓰레드도 뭐도 다 마찬가지임
+
+커널 오브젝트의 특정 요소를 바꾸기위해선?
+ -> 커널 오브젝트에 직접 접근은 안 되고, 간접적으로 접근해야함
+ -> 그래서 그거에 관련된 API를 제공해줌 ex) upc()
+ -> 이때 인자로 커널 오브젝트를 넘겨줄 순 없음 (다 막아놨기때문에)
+ -> 그래서 우리가 커널 오브젝트가 생성될 때 그에 관련된 핸들을 반환하는데 (근데 또 각 리소스별로다름)
+ -> 그 핸들을 API에 전달하는 방식으로 함
+ -> 한 프로세스가 생성이 되면 그 프로세스는 핸들테이블에 핸들을 생성하고 그 테이블은 핸들 값이랑 그 대상체의 주소가 담겨있음
+ -> 그 핸들 테이블에는 자식 프로세스의 핸들도 있고 자기의 핸들도 있음 
+ -> 자식 프로세스 만들때 자식의 핸들값을 부모가 가짐
+ -> 즉 핸들테이블은 각 프로세스에 종속적임
+ -> 자식 프로세스가 종료되어도 커널 오브젝트는 사라지지 않음! UC가 1이라서
+ -> UC는 자기한테 참조되고 있느 ㄴ애들
+ -> main에 있는 return 은 커널 오브젝트에 들어감!!!!!!!! (종료 상태를 저장함)
+ -> 그래서 부모가 자식프로세스의 상태 확인할 때 자식의 핸들을 통해 자식의 커널 오브젝트를 접근해 해당 프로세스의 상태를 체크 
+ -> 근데 사실은 자기 자신의 핸들 정보는 자기 핸들 테이블에 저장되지 않음
+ -> 그럼 자기 핸들을 가져오려면?getCurrentProcess()가 있는데 이는 -1이 return 되는데 이건 진짜 핸들이 아니라 그냥 자기 자신을 나타내는 핸들의 상수임
+ -> closehandle을 하면 부모가 자식을 포기하는 형태가됨, 그럼 얘들은 부-모 자식관계가 아니라 그냥 부모에 있는 핸들테이블에서 자식 핸들을 제거하는 것 -> 좀비 프로세스 생성을 방지할 수 이씀
+
+프로세스간 통신!! IPC
+ -> 서로 통신하는 방식은 특정 데이터 영역을 두고 그 영역을 공유하는 형태임
+ -> 이때 사용하는 기법이 메일 슬롯
+ -> 이는 단방향 특성임 Sender -> Receiver 로만 데이터 전송 가능
+ -> Broadcasting 가능 함
+ -> 결국 메일슬롯도 파일 하나
+ -> ReadFile, WriteFile
+
+- 프로세스 만들면 커널 오브젝트가 생성되고 그 오브젝트의 상태는 Non-signaled가 됨
+- Non-signaled상태는 Running 상태라는걸 나타냄
 
 
 </pre>
@@ -949,7 +693,7 @@ But what makes the book really funny is that sometimes you can actually relate t
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Word/2018.12.23/">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Algorithm/bfsdfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -963,7 +707,7 @@ But what makes the book really funny is that sometimes you can actually relate t
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/05/English/Word/2018.12.23/" class="post-title-link" itemprop="url">English/Word/2018.12.23</a>
+            <a href="/2020/05/05/Algorithm/bfsdfs/" class="post-title-link" itemprop="url">Algorithm/bfsdfs</a>
         </h2>
 
         <div class="post-meta">
@@ -975,6 +719,13 @@ But what makes the book really funny is that sometimes you can actually relate t
 
               <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-05-06 00:11:32" itemprop="dateModified" datetime="2020-05-06T00:11:32+09:00">2020-05-06</time>
+              </span>
 
           
   
@@ -985,8 +736,8 @@ But what makes the book really funny is that sometimes you can actually relate t
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/05/05/English/Word/2018.12.23/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Word/2018.12.23/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/05/05/Algorithm/bfsdfs/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Algorithm/bfsdfs/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1001,224 +752,8 @@ But what makes the book really funny is that sometimes you can actually relate t
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>distinguished<br>유명한, 성공한</p>
-<p>deploy<br>배치하다</p>
-<p>classified<br>기밀의</p>
-<p>hoarded<br>비축물</p>
-<p>gleam<br>환하다, 반짝거리다</p>
-<p>ruled by a beloved<br>총애받는</p>
+          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Vertex* v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!v)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(v-&gt;visited)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c"</span>, v-&gt;data);</span><br><span class="line">    Edge* e = v-&gt;adjacencyList;</span><br><span class="line">    v-&gt;visited = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (e)</span><br><span class="line">    &#123;</span><br><span class="line">        dfs(e-&gt;to);</span><br><span class="line">        e = e-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(Vertex* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!root)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Queue* q = create_queue();</span><br><span class="line">    enQueue(q, root);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!isEmpty(q))</span><br><span class="line">    &#123;</span><br><span class="line">        Vertex* v = deQueue(q);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>, v-&gt;data);</span><br><span class="line">        v-&gt;visited = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        Edge* e = v-&gt;adjacencyList;</span><br><span class="line">        <span class="keyword">while</span>(e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!e-&gt;to-&gt;visited)</span><br><span class="line">            &#123;</span><br><span class="line">                enQueue(q, e-&gt;to);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            e = e-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    destory_queue(q);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Listening/2018.12.19/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/English/Listening/2018.12.19/" class="post-title-link" itemprop="url">English/Listening/2018.12.19</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/English/Listening/2018.12.19/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Listening/2018.12.19/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>영상 : <a href="https://www.youtube.com/watch?v=DnuuoKX_w1w" target="_blank" rel="noopener">https://www.youtube.com/watch?v=DnuuoKX_w1w</a></p>
-<pre>
-
-1. would my daughter and bit her brother i put ..
--> When my daughter bit her brother i put a pinch of pepper in her mouth.
-
-2. she cried in cry but she never begain.
--> She cried and cired, but she never bit again.
-
-3. dont give me started.
--> dont get me started.
-
-4. sweet your in colone?
--> Sweetie, are you wearing cologne?
-
-5. you've been pushed me hole me??
--> You've been pushing me away the whole whole week.
-저를 일주일내내 ㅇ밀어내고있어요.
-
-6. I was .. 
--> I was the one that all the moms looked up to.
-
-7. valuneteer because when them there so mush 
--> I volunteer because I want them to see that there is so much more to me.
-나한테 더 많은 것이 있다는걸 보여주고 싶어서 자원하는거야.
-
-8. What ?? to tell me that?
--> What did't you tell me that?
-
-9. I made the whole thing??
--> I made this whole thing into some ridiculous competition and i'm pathetic.
-내가 이 모든걸 말도 안되는 경쟁으로 만들었네.. 나 정말 한심하다.
-
-10. ??
--> We'll watch a movie, put the whole thing behind you.
-우린 영화 볼거고, 전부다 잊어버리쟈
-</pre>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/English/Listening/2018.12.20/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/English/Listening/2018.12.20/" class="post-title-link" itemprop="url">English/Listening/2018.12.20</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/English/Listening/2018.12.20/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/English/Listening/2018.12.20/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <pre>
-
-1. what take only that theres coming
--> I think we all knew that day was coming
-
-2. this stange on her top
--> there's a stranger in our hot tub.
-
-3. hole is been there
--> How long has he been there?
-
-4. I saw him exactly one second for you
--> I saw him exactly one scenond before you
-
-5. you know everything i know
--> you know everything i know
-
-6. I am calling ?? one, i am giving my bag.
--> I am calling 911, i am getting my bat.
-
-7. maybe ball we out that
--> maybe we're overracting.
-
-8. anyway he is a super cool guy any stragight
--> anyway he is a super cool guy and he's straight.
-
-9. so other is know we were this
--> So there's no weirdness.
-
-10. i'm gonna toms full down?
--> I'm gonna tell him to slow down.
-
-</pre>
       
     </div>
 
@@ -1236,7 +771,7 @@ But what makes the book really funny is that sometimes you can actually relate t
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="이전 페이지"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="다음 페이지"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="이전 페이지"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
   </nav>
 
 
@@ -1302,7 +837,7 @@ But what makes the book really funny is that sometimes you can actually relate t
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
