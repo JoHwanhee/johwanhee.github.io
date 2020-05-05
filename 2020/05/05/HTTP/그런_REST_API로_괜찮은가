@@ -270,12 +270,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/05/Flutter/firebase_messaging/" rel="prev" title="Flutter/firebase_messaging">
-      <i class="fa fa-chevron-left"></i> Flutter/firebase_messaging
+    <a href="/2020/05/05/HTTP/The_basic_of_web/" rel="prev" title="HTTP/The_basic_of_web">
+      <i class="fa fa-chevron-left"></i> HTTP/The_basic_of_web
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/05/HTTP/The_basic_of_web/" rel="next" title="HTTP/The_basic_of_web">
-      HTTP/The_basic_of_web <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/05/Linux/makingFTP/" rel="next" title="Linux/makingFTP">
+      Linux/makingFTP <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
