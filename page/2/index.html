@@ -156,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/HTTP/%E1%84%80%E1%85%B3%E1%84%85%E1%85%A5%E1%86%AB%20REST%20API%E1%84%85%E1%85%A9%20%E1%84%80%E1%85%AB%E1%86%AB%E1%84%8E%E1%85%A1%E1%86%AD%E1%84%8B%E1%85%B3%E1%86%AB%E1%84%80%E1%85%A1?/">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/HTTP/The_basic_of_web/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -170,7 +170,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/05/HTTP/%E1%84%80%E1%85%B3%E1%84%85%E1%85%A5%E1%86%AB%20REST%20API%E1%84%85%E1%85%A9%20%E1%84%80%E1%85%AB%E1%86%AB%E1%84%8E%E1%85%A1%E1%86%AD%E1%84%8B%E1%85%B3%E1%86%AB%E1%84%80%E1%85%A1?/" class="post-title-link" itemprop="url">HTTP/그런 REST API로 괜찮은가?</a>
+            <a href="/2020/05/05/HTTP/The_basic_of_web/" class="post-title-link" itemprop="url">HTTP/The_basic_of_web</a>
         </h2>
 
         <div class="post-meta">
@@ -192,8 +192,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/05/05/HTTP/%E1%84%80%E1%85%B3%E1%84%85%E1%85%A5%E1%86%AB%20REST%20API%E1%84%85%E1%85%A9%20%E1%84%80%E1%85%AB%E1%86%AB%E1%84%8E%E1%85%A1%E1%86%AD%E1%84%8B%E1%85%B3%E1%86%AB%E1%84%80%E1%85%A1?/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/HTTP/그런 REST API로 괜찮은가?/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/05/05/HTTP/The_basic_of_web/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/HTTP/The_basic_of_web/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -208,120 +208,58 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="그런-REST-API로-괜찮은가"><a href="#그런-REST-API로-괜찮은가" class="headerlink" title="그런 REST API로 괜찮은가?"></a>그런 REST API로 괜찮은가?</h1><p><img src="./Images/web_page_first_screen.jpg" alt=""></p>
-<p> DEVIEW 2017 2-2 SECTION <a href="https://tv.naver.com/v/2292653" target="_blank" rel="noopener">그런 REST API로 괜찮은가</a> 영상을 보고나서 작성 하는 글이다. 영상을 본 뒤 전 회사에서 작성했던 REST API를 돌이켜 생각해보니 이런 REST API로는 괜찮지 않았다. 당시에도 REST API 설계에 관심이 많았으나, 내가 작성했던 것들은 무언가 하나씩 잘못되어있었다.</p>
-<p> 영상에선 <a href="https://twitter.com/fielding?lang=en" target="_blank" rel="noopener">Roy T. Felding</a>의 직접적인 의견들을 토대로 World wide web 부터 현재의 Rest API까지 이르기까지를 설명하고 있다.</p>
-<h3 id="Web-1991"><a href="#Web-1991" class="headerlink" title="Web (1991)"></a>Web (1991)</h3><p> Q. 어떻게 인터넷에서 정보를 공유할 것인가? </p>
-<p> A. 정보들을 하이퍼텍스트로 연결한다.</p>
-<p> 1) 표현형식 : HTML</p>
-<p> 2) 식별자 : URI</p>
-<p> 3) 전송방법 : HTTP</p>
-<p><strong>Roy T. Fielding Says</strong></p>
-<ul>
-<li><em>“How do I improve HTTP without breaking the Web?”</em></li>
-<li><em>“Rest APIs must be hypertext-driven”</em></li>
-<li><em>“REST API를 위한 최고의 버저닝 전략은 버저닝을 안 하는 것”</em></li>
-</ul>
-<h3 id="REST-API"><a href="#REST-API" class="headerlink" title="REST API"></a>REST API</h3><p>REST API는 분산 하이퍼미디어 시스템을 위한 아키텍쳐 스타일이다. 아키텍쳐 스타일은 제약조건의 집합인데, 이 말은 즉 제약조건을 모두 지켜야 REST API라고 말을 할 수 있다는 것이다.</p>
-<p><strong>다음은 REST API의 제약조건들 이다.</strong></p>
-<ul>
-<li>client-server</li>
-<li>stateless</li>
-<li>cache</li>
-<li><strong>uniform interface</strong></li>
-<li>layered system</li>
-<li>code-on-demand (optional)<br>서버에서 코드를 client로 보내어 바로 실행할 수 있어야한다</li>
-</ul>
-<p><strong>uniform interface 을 잘 만족 시켜야 REST 하다. 라고할 수있다.</strong></p>
-<ul>
-<li><p>identification of resource<br>리소스가 URI가 식별되어야한다.</p>
-</li>
-<li><p>manipulation of resources through representations<br>리소스를 만들거나 삭제하거나할 때 HTTP 메세지에 표현을 담아야 한다. </p>
-</li>
-<li><p>self-descriptive messages<br>메세지는 스스로에 설명할 수 있어야 한다. 다음은 강연자가 설명하는 self-descriptive messages의 예시이다. Response Message에서 HTTP의 상태 설명과 body의 media type을 충분히 설명하고 있어 self-descriptive 하다고 하는 것이다.<br><img src="./Images/Self-descriptive%20message.jpg" alt=""></p>
-</li>
-<li><p>hypermedia as the engine of application sate<br>어플리케이션의 상태는 hyperlink를 통해서 항상 전이가 되어야한다.<br><img src="./Images/HATEOAS.jpg" alt=""></p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Flutter/firebase_messaging/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/Flutter/firebase_messaging/" class="post-title-link" itemprop="url">Flutter/firebase_messaging</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/Flutter/firebase_messaging/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Flutter/firebase_messaging/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">".Application"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ga.clecture.c_lecture;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.flutter.app.FlutterApplication;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.PluginRegistry;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.PluginRegistry.PluginRegistrantCallback;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">FlutterApplication</span> <span class="keyword">implements</span> <span class="title">PluginRegistrantCallback</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        FlutterFirebaseMessagingService.setPluginRegistrant(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerWith</span><span class="params">(PluginRegistry registry)</span> </span>&#123;</span><br><span class="line">        FirebaseCloudMessagingPluginRegistrant.registerWith(registry);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ga.clecture.c_lecture;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.PluginRegistry;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">FirebaseCloudMessagingPluginRegistrant</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerWith</span><span class="params">(PluginRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (alreadyRegisteredWith(registry)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        FirebaseMessagingPlugin.registerWith(registry.registrarFor(<span class="string">"io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin"</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">alreadyRegisteredWith</span><span class="params">(PluginRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String key = FirebaseCloudMessagingPluginRegistrant<span class="class">.<span class="keyword">class</span>.<span class="title">getCanonicalName</span>()</span>;</span><br><span class="line">        <span class="keyword">if</span> (registry.hasPlugin(key)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        registry.registrarFor(key);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>FCM 2번 먹는 이슈</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class MainActivity: FlutterActivity() &#123;</span><br><span class="line">   &#x2F;*  override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) &#123;</span><br><span class="line">        GeneratedPluginRegistrant.registerWith(flutterEngine);</span><br><span class="line">    &#125;*&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="HTTP-웹의-기초"><a href="#HTTP-웹의-기초" class="headerlink" title="HTTP : 웹의 기초"></a>HTTP : 웹의 기초</h1><p>Http 프로토콜을 빠르게 훑어본다.</p>
+<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP?"></a>HTTP?</h4><p> 전세계의 웹 브라우저, 서버, 웹 애플리케이션은 모두 HTTP를 통해 서로 대화한다. HTTP는 TCP를 사용하기 때문에, 데이터 손실이 없음을 보장한다.  </p>
+<h4 id="리소스"><a href="#리소스" class="headerlink" title="리소스"></a>리소스</h4><p> 웹서버는 웹 리소스를 관리하고 제공한다. 가장 단순한 웹 리소스는 웹 서버 파일 시스템의 정적 파일이다. 정적 파일은 텍스트, HTML, WORD등 모든 종류의 파일을 의미한다.<br> 그러나 꼭 모든 파일이 정적일 필요는 없으며, 리소스 요청에 따라 동적 콘텐츠를 제공하기도 한다. 웹캠으로부터 받아오는 리소스, 주식거래 리소스 등 서버 외부로부터 받아올 수 있다.</p>
+<h4 id="미디어-타입"><a href="#미디어-타입" class="headerlink" title="미디어 타입"></a>미디어 타입</h4><p> 인터넷은 순천 가지 데이터 타입을 다루기 때문에, HTTP는 웹에서 전송되는 객체 각자에 MIME타입이라는 포맷 라벨을 이용한다.  </p>
+<p> MIME은 사선으로 구분된 주 타입과 부 타입으로 문자열 라벨이다.  </p>
+<ol>
+<li>text/html  </li>
+<li>text/plain  </li>
+<li>image/jpeg  </li>
+<li>image/gif  </li>
+</ol>
+<h4 id="URI-uniform-resource-identifier"><a href="#URI-uniform-resource-identifier" class="headerlink" title="URI (uniform resource identifier)"></a>URI (uniform resource identifier)</h4><p> 웹 서버 리소스는 각자 이름을 갖고 있기 때문에, 클라이언트는 리소스를 지목할 수 있다. URI에는 두가지가 있는데, URL과 URN이라는 거다.</p>
+<h5 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h5><p> uniform resource locator는 리소스 식별자의 가장 흔한 형태이다. 서버의 특정 한 리소스에 대해 구체적인 위치를 서술한다.<br><a href="http://www.oreilly.com/index.html" target="_blank" rel="noopener">http://www.oreilly.com/index.html</a>  </p>
+<p> 대부분의 URL은 세 부분으로 이루어진 표준 포맷을 따른다.</p>
+<ol>
+<li>프로토콜 : scheme (http://)</li>
+<li>인터넷 주소 : <a href="http://www.joes-hardware.com" target="_blank" rel="noopener">www.joes-hardware.com</a></li>
+<li>리소스 : /specials/saw-blade.gif</li>
+</ol>
+<h5 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h5><p> uniform resource name은 콘텐츠를 이루는 한 리소스에 대해, 그 리소스의 위치에 영향 받지 않는 유일무이한 이름 역할을 한다. 위치 독립적이기때문에, 여기저기로 리소를 옮기더라도 정상적으로 동작한다.</p>
+<p> ex) 인터넷 표준문서 RFC 2141이 어디에 있거나 상관없이 그것을 지칭하기 위해 사용한다.<br>urn:ietf:rfc:2141</p>
+<p> URN아직 실험단계이며 널리 채택되지 않았다.</p>
+<h4 id="트랙잭션"><a href="#트랙잭션" class="headerlink" title="트랙잭션"></a>트랙잭션</h4><p> HTTP 트랜잭션은 요청과 응답으로 이루어져있다.<br>요청의 예<br>GET /specials/saw-blade.gif HTTP/1.0 시작줄<br>Host: <a href="http://www.joes-hardware.com" target="_blank" rel="noopener">www.joes-hardware.com</a>  헤더 시작<br>Accept: text/*<br>Accept-Language: en,fr<br>                            헤더 끝</p>
+<p>응답의 예<br>HTTP/1.0 200 OK  시작줄<br>Content-type: image/gif  헤더 시작<br>Content-length: 8572<br>                         헤더 끝<br>본문  </p>
+<h5 id="메서드"><a href="#메서드" class="headerlink" title="메서드"></a>메서드</h5><p> 흔히 쓰이는 HTTP 메서드  </p>
+<ol>
+<li>GET 서버에서 클라이언트로 지정한 리소스를 보내라.  </li>
+<li>PUT 클라이언트에서 서버로 보낸 데이터를 지정한 이름의 리소스로 저장하라.  </li>
+<li>DELETE 지정한 리소스를 서버에서 삭제하라.  </li>
+<li>POST 클라이언트 데이터를 서버 게이트웨이 애플리케이션으로 보내라.  </li>
+<li>HEAD 지정한 리소스에 대한 응답에서, HTTP 헤더 부분만 보내라.  </li>
+</ol>
+<h5 id="상태코드"><a href="#상태코드" class="headerlink" title="상태코드"></a>상태코드</h5><p> 모든 응답 메세지는 상태 코드와 함께 반환된다.  </p>
+<ol>
+<li>200 좋다.</li>
+<li>302 다시보내라.</li>
+<li>404 없다.</li>
+</ol>
+<h4 id="메세지"><a href="#메세지" class="headerlink" title="메세지"></a>메세지</h4><p> 메세지는 크게 세 가지로 나뉘어진다.</p>
+<h5 id="시작줄"><a href="#시작줄" class="headerlink" title="시작줄"></a>시작줄</h5><p> 요청과 응답의 상태를 나타낸다.  </p>
+<h5 id="헤더"><a href="#헤더" class="headerlink" title="헤더"></a>헤더</h5><p> 시작줄 다음에 0개 이상의 헤더 필드가 이어진다. 각 헤더 필드는 쉬운 구문분석을 위해 콜론(:)으로 구분되어 하나의 이름과 하나의 값으로 구성된다. 헤더는 빈 줄로 끝난다.</p>
+<h5 id="본문"><a href="#본문" class="headerlink" title="본문"></a>본문</h5><p> 빈줄 다음부터 본문의 내용이 시작된다.</p>
+<h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><p> HTTP는 애플리케이션 레이어의 프로토콜이며, HTTP또한 메세지들을 전송하기 위하여 TCP/IP의 프로토콜을 이용하는 것뿐이다.  </p>
+<ol>
+<li>웹 브라우저는 서버의 URL에서 호스트 명을 추출한다.  </li>
+<li>웹 브라우저는 서버의 호스트 명을 IP로 변환한다.  </li>
+<li>웹 브라우저는 URL에서 포스번호를 추출한다.  </li>
+<li>웹 브라우저는 웹 서버와 TCP 커넥션을 맺는다.  </li>
+<li>웹 브라우저는 서버에 HTTP 요청을 보낸다.  </li>
+<li>서버는 웹 브라우저에 HTTP 응답을 돌려준다.  </li>
+<li>커넥션이 닫히면, 웹 브라우저는 문서를 보여준다.  </li>
+</ol>
 
       
     </div>
@@ -423,6 +361,85 @@
 <li>Close<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (serverSocketChannel != <span class="keyword">null</span> &amp;&amp; serverSocketChannel.isOpen()) &#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		serverSocketChannel.close();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">		e1.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Flutter/firebase_messaging/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/Flutter/firebase_messaging/" class="post-title-link" itemprop="url">Flutter/firebase_messaging</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/Flutter/firebase_messaging/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Flutter/firebase_messaging/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">".Application"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ga.clecture.c_lecture;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.flutter.app.FlutterApplication;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.PluginRegistry;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.PluginRegistry.PluginRegistrantCallback;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">FlutterApplication</span> <span class="keyword">implements</span> <span class="title">PluginRegistrantCallback</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        FlutterFirebaseMessagingService.setPluginRegistrant(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerWith</span><span class="params">(PluginRegistry registry)</span> </span>&#123;</span><br><span class="line">        FirebaseCloudMessagingPluginRegistrant.registerWith(registry);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ga.clecture.c_lecture;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.flutter.plugin.common.PluginRegistry;</span><br><span class="line"><span class="keyword">import</span> io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">FirebaseCloudMessagingPluginRegistrant</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerWith</span><span class="params">(PluginRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (alreadyRegisteredWith(registry)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        FirebaseMessagingPlugin.registerWith(registry.registrarFor(<span class="string">"io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin"</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">alreadyRegisteredWith</span><span class="params">(PluginRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String key = FirebaseCloudMessagingPluginRegistrant<span class="class">.<span class="keyword">class</span>.<span class="title">getCanonicalName</span>()</span>;</span><br><span class="line">        <span class="keyword">if</span> (registry.hasPlugin(key)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        registry.registrarFor(key);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>FCM 2번 먹는 이슈</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class MainActivity: FlutterActivity() &#123;</span><br><span class="line">   &#x2F;*  override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) &#123;</span><br><span class="line">        GeneratedPluginRegistrant.registerWith(flutterEngine);</span><br><span class="line">    &#125;*&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -609,83 +626,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/CSS/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hwanhee jo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good day to code">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/05/CSS/README/" class="post-title-link" itemprop="url">CSS/README</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">작성일</span>
-
-              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/05/05/CSS/README/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/CSS/README/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="CSS-학습-내용"><a href="#CSS-학습-내용" class="headerlink" title="CSS 학습 내용"></a>CSS 학습 내용</h1><p>CSS는 html에서 <code>기능적 요소와 디자인적 요소를 분리하고자</code> 개발된 언어이다.</p>
-<h4 id="만약-다음과-같은-코드에서-a태그-글자의-색상을-변경하고자-한다면"><a href="#만약-다음과-같은-코드에서-a태그-글자의-색상을-변경하고자-한다면" class="headerlink" title="만약 다음과 같은 코드에서 a태그 글자의 색상을 변경하고자 한다면."></a>만약 다음과 같은 코드에서 a태그 글자의 색상을 변경하고자 한다면.</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"index.html"</span>&gt;</span>WEB<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"1.html"</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"2.html"</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"3.html"</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="이와-같이-html에서-문서의-구조가-아닌-디자인적-기능을-하는-태그를-이용해야만된다-태그"><a href="#이와-같이-html에서-문서의-구조가-아닌-디자인적-기능을-하는-태그를-이용해야만된다-태그" class="headerlink" title="이와 같이 html에서 문서의 구조가 아닌, 디자인적 기능을 하는 태그를 이용해야만된다. (태그)"></a>이와 같이 html에서 문서의 구조가 아닌, 디자인적 기능을 하는 태그를 이용해야만된다. (<font>태그)</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"index.html"</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>WEB<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"1.html"</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"2.html"</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"3.html"</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="이럴때-html에서-디자인적-기능을-분리하는-CSS를-이용하면-html은-문서의-구조만을-나타내게-되고-코드의-가독성은-훨씬-올라갈-수-있다"><a href="#이럴때-html에서-디자인적-기능을-분리하는-CSS를-이용하면-html은-문서의-구조만을-나타내게-되고-코드의-가독성은-훨씬-올라갈-수-있다" class="headerlink" title="이럴때 html에서 디자인적 기능을 분리하는 CSS를 이용하면, html은 문서의 구조만을 나타내게 되고 코드의 가독성은 훨씬 올라갈 수 있다."></a>이럴때 html에서 디자인적 기능을 분리하는 CSS를 이용하면, html은 문서의 구조만을 나타내게 되고 코드의 가독성은 훨씬 올라갈 수 있다.</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>JoHwanhee<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/uikit.min.css"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/uikit.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/uikit-icons.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    a &#123;</span><br><span class="line">      color: black;</span><br><span class="line">      text-decoration: none;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">background</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"index.html"</span>&gt;</span>WEB<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"1.html"</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"2.html"</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"3.html"</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language.[1] Although most often used to set the visual style of web pages and user interfaces written in HTML and</span><br><span class="line">    XHTML, the language can be applied to any XML document, including plain XML, SVG and XUL, and is applicable to rendering in speech, or on other media. Along with HTML and JavaScript, CSS is a cornerstone technology used by most websites to</span><br><span class="line">    create visually engaging webpages, user interfaces for web applications, and user interfaces for many mobile applications.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
     <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/CSS/Selector/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -748,6 +688,83 @@
 
 
 <p>추가정보 : <a href="https://www.w3schools.com/csSref/css_selectors.asp" target="_blank" rel="noopener">https://www.w3schools.com/csSref/css_selectors.asp</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/CSS/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hwanhee jo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good day to code">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/CSS/README/" class="post-title-link" itemprop="url">CSS/README</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/05/CSS/README/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/CSS/README/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="CSS-학습-내용"><a href="#CSS-학습-내용" class="headerlink" title="CSS 학습 내용"></a>CSS 학습 내용</h1><p>CSS는 html에서 <code>기능적 요소와 디자인적 요소를 분리하고자</code> 개발된 언어이다.</p>
+<h4 id="만약-다음과-같은-코드에서-a태그-글자의-색상을-변경하고자-한다면"><a href="#만약-다음과-같은-코드에서-a태그-글자의-색상을-변경하고자-한다면" class="headerlink" title="만약 다음과 같은 코드에서 a태그 글자의 색상을 변경하고자 한다면."></a>만약 다음과 같은 코드에서 a태그 글자의 색상을 변경하고자 한다면.</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"index.html"</span>&gt;</span>WEB<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"1.html"</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"2.html"</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"3.html"</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="이와-같이-html에서-문서의-구조가-아닌-디자인적-기능을-하는-태그를-이용해야만된다-태그"><a href="#이와-같이-html에서-문서의-구조가-아닌-디자인적-기능을-하는-태그를-이용해야만된다-태그" class="headerlink" title="이와 같이 html에서 문서의 구조가 아닌, 디자인적 기능을 하는 태그를 이용해야만된다. (태그)"></a>이와 같이 html에서 문서의 구조가 아닌, 디자인적 기능을 하는 태그를 이용해야만된다. (<font>태그)</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"index.html"</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>WEB<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"1.html"</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"2.html"</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"3.html"</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="이럴때-html에서-디자인적-기능을-분리하는-CSS를-이용하면-html은-문서의-구조만을-나타내게-되고-코드의-가독성은-훨씬-올라갈-수-있다"><a href="#이럴때-html에서-디자인적-기능을-분리하는-CSS를-이용하면-html은-문서의-구조만을-나타내게-되고-코드의-가독성은-훨씬-올라갈-수-있다" class="headerlink" title="이럴때 html에서 디자인적 기능을 분리하는 CSS를 이용하면, html은 문서의 구조만을 나타내게 되고 코드의 가독성은 훨씬 올라갈 수 있다."></a>이럴때 html에서 디자인적 기능을 분리하는 CSS를 이용하면, html은 문서의 구조만을 나타내게 되고 코드의 가독성은 훨씬 올라갈 수 있다.</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>JoHwanhee<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/uikit.min.css"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/uikit.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/uikit-icons.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    a &#123;</span><br><span class="line">      color: black;</span><br><span class="line">      text-decoration: none;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">background</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"index.html"</span>&gt;</span>WEB<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"1.html"</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"2.html"</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"3.html"</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language.[1] Although most often used to set the visual style of web pages and user interfaces written in HTML and</span><br><span class="line">    XHTML, the language can be applied to any XML document, including plain XML, SVG and XUL, and is applicable to rendering in speech, or on other media. Along with HTML and JavaScript, CSS is a cornerstone technology used by most websites to</span><br><span class="line">    create visually engaging webpages, user interfaces for web applications, and user interfaces for many mobile applications.</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1031,7 +1048,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/C/object_type_variables/">
+    <link itemprop="mainEntityOfPage" href="https://johwanhee.github.io/2020/05/05/Algorithm/climb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1045,7 +1062,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/05/C/object_type_variables/" class="post-title-link" itemprop="url">C/object_type_variables</a>
+            <a href="/2020/05/05/Algorithm/climb/" class="post-title-link" itemprop="url">Algorithm/climb</a>
         </h2>
 
         <div class="post-meta">
@@ -1057,6 +1074,13 @@
 
               <time title="Post created: 2020-05-05 23:53:48" itemprop="dateCreated datePublished" datetime="2020-05-05T23:53:48+09:00">2020-05-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-05-06 00:07:16" itemprop="dateModified" datetime="2020-05-06T00:07:16+09:00">2020-05-06</time>
+              </span>
 
           
   
@@ -1067,8 +1091,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/05/05/C/object_type_variables/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/C/object_type_variables/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/05/05/Algorithm/climb/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/05/Algorithm/climb/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1083,18 +1107,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="오브젝트-타입-변수에-대하여"><a href="#오브젝트-타입-변수에-대하여" class="headerlink" title="오브젝트, 타입, 변수에 대하여"></a>오브젝트, 타입, 변수에 대하여</h1><ol>
-<li><p>Object<br>실행시에 표현할 수 있는 값들을 저장하는 곳을 Object라고 합니다.<br>예를들어, printf(“%d” ,10) 이라고 할 경우에 10이라는 숫자는 한 어느 저장소에 들어있고 이 저장소를 Object라고 합니다.  </p>
-</li>
-<li><p>타입<br>타입은 큰 의미로 Object 타입과  function 타입으로 나뉘어집니다. 또 다시 Object 타입은 complete 타입과 imcomplete 타입으로 나뉘어지며<br>complete 타입은 <code>크기를 결정할 정보가 완전한 경우</code> 입니다.  ( basic types and pointer type )<br>imcomptete 타입은 <code>크기를 결정할 정보가 불완전한 경우</code> 입니다.  ( void, array of unkown size, structure, union, enum )  </p>
-</li>
-<li><p>변수<br>변수 = Object + 식별자  </p>
-</li>
-</ol>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
-<li><a href="http://www.msg.ucsf.edu/local/programs/IBM_Compilers/C:C++/html/language/ref/clrc03incotyp.htm" target="_blank" rel="noopener">http://www.msg.ucsf.edu/local/programs/IBM_Compilers/C:C++/html/language/ref/clrc03incotyp.htm</a></li>
-</ol>
-
+          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">climb</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( n == <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">return</span> climb(n - <span class="number">1</span>) + climb(n - <span class="number">2</span>) + climb(n - <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, climb(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
       
     </div>
 
